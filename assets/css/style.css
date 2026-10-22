@@ -5,8 +5,9 @@
   --bg-gradient-end: #612209;
   --bg-darker: #461605;
   
+  --sage-brand: #758a69;
   --sage-card: #8b9c7b;
-  --sage-dark: #647554;
+  --sage-dark: #5a6e4e;
   --sage-light: #a3b493;
   --sage-pill: #738563;
 
@@ -211,7 +212,7 @@ body {
   100% { transform: scale(0.85); opacity: 0.15; }
 }
 
-/* Watermark Monogram Brand Symbol (from bottom right of flyer) */
+/* Watermark Monogram Brand Symbol */
 .watermark-brand {
   position: absolute;
   bottom: 25px;
@@ -222,24 +223,13 @@ body {
   pointer-events: none;
 }
 
-/* Subtle Ribbon Waves through the background */
-.ribbon-wave-svg {
-  position: absolute;
-  width: 100%;
-  max-width: 1200px;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  opacity: 0.06;
-}
-
 /* Main Container */
 .main-wrapper {
   position: relative;
   z-index: 1;
   max-width: 720px;
   margin: 0 auto;
-  padding: 30px 20px 120px 20px;
+  padding: 24px 20px 120px 20px;
 }
 
 /* Section Ornamental Dividers */
@@ -271,8 +261,23 @@ body {
 .flyer-hero {
   text-align: center;
   position: relative;
-  padding-top: 15px;
+  padding-top: 10px;
   padding-bottom: 25px;
+}
+
+/* Top Official Logo */
+.top-official-brand-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.brand-logo-pill {
+  height: 52px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .top-badge-season {
@@ -343,7 +348,7 @@ body {
 .vehicle-card {
   position: relative;
   border-radius: var(--radius-lg);
-  padding: 18px 18px 22px 18px;
+  padding: 20px 18px 24px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -375,11 +380,11 @@ body {
   display: inline-block;
   align-self: flex-start;
   font-family: var(--font-main);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 800;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 5px 14px;
+  padding: 6px 14px;
   border-radius: var(--radius-sm);
   margin-bottom: 8px;
 }
@@ -398,12 +403,12 @@ body {
 
 .vehicle-title {
   font-family: var(--font-main);
-  font-size: clamp(1.15rem, 3.4vw, 1.45rem);
+  font-size: clamp(1.2rem, 3.6vw, 1.55rem);
   font-weight: 900;
   line-height: 1.15;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .card-crv .vehicle-title {
@@ -418,11 +423,10 @@ body {
 .vehicle-img-wrapper {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 6px 0 12px 0;
   border-radius: var(--radius-md);
   background: #ffffff;
   overflow: hidden;
@@ -439,32 +443,6 @@ body {
 
 .vehicle-card:hover .vehicle-img-wrapper img {
   transform: scale(1.05);
-}
-
-.vehicle-specs-summary {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 4px;
-}
-
-.spec-chip {
-  padding: 3px 9px;
-  border-radius: var(--radius-xs);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-}
-
-.card-crv .spec-chip {
-  background: rgba(255, 255, 255, 0.22);
-  color: var(--white);
-}
-
-.card-moto .spec-chip {
-  background: rgba(81, 95, 71, 0.12);
-  color: #495740;
 }
 
 /* Framed Box for 3rd Place & Ticket CTA (Exact Flyer Structure) */
@@ -688,26 +666,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   font-family: var(--font-main);
-}
-
-.organizer-logo {
-  font-size: 1.95rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  color: var(--white);
-  display: flex;
-  align-items: baseline;
-  line-height: 1;
-}
-
-.organizer-logo small {
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  margin-left: 3px;
-  opacity: 0.88;
 }
 
 .contact-phone-link {
@@ -716,7 +676,7 @@ body {
   gap: 8px;
   color: var(--white);
   text-decoration: none;
-  font-size: 1.05rem;
+  font-size: 1.02rem;
   font-weight: 800;
   letter-spacing: 0.8px;
   padding: 6px 14px;
@@ -1158,7 +1118,9 @@ body {
   fill: #647554;
 }
 
-/* Primary Online Checkout Action Button */
+/* ====================================================== */
+/* REFINED SAGE OLIVE BUTTONS (HARMONIOUS WITH THE FLYER) */
+/* ====================================================== */
 .btn-online-checkout {
   display: flex;
   align-items: center;
@@ -1166,7 +1128,7 @@ body {
   gap: 12px;
   width: 100%;
   margin-top: 16px;
-  background: linear-gradient(135deg, #1f9d55 0%, #177a41 100%);
+  background: linear-gradient(135deg, #748967 0%, #5d7050 100%);
   color: var(--white);
   font-family: var(--font-main);
   font-size: 1.25rem;
@@ -1176,16 +1138,16 @@ body {
   padding: 18px 24px;
   border-radius: var(--radius-full);
   text-decoration: none;
-  box-shadow: 0 10px 25px rgba(31, 157, 85, 0.4);
+  box-shadow: 0 10px 24px rgba(60, 75, 50, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transition: all 0.25s ease;
-  border: none;
   cursor: pointer;
 }
 
 .btn-online-checkout:hover {
-  background: linear-gradient(135deg, #24ad5f 0%, #1a884a 100%);
+  background: linear-gradient(135deg, #819773 0%, #687d5b 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(31, 157, 85, 0.5);
+  box-shadow: 0 14px 28px rgba(60, 75, 50, 0.45);
 }
 
 .btn-online-checkout .svg-icon {
@@ -1211,22 +1173,120 @@ body {
   fill: #647554;
 }
 
-/* Secondary Advisor Option */
-.secondary-support-opt {
+/* ====================================================== */
+/* OFFICIAL TICKET SHOWCASE SECTION                       */
+/* ====================================================== */
+.official-ticket-preview-card {
+  margin-top: 40px;
+  background: rgba(45, 17, 7, 0.35);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
   text-align: center;
-  margin-top: 10px;
-  font-size: 0.84rem;
-  color: #6a5e55;
 }
 
-.secondary-support-opt a {
-  color: #3b502e;
-  font-weight: 700;
-  text-decoration: underline;
+.ticket-full-img {
+  width: 100%;
+  max-width: 660px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  margin-top: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* ====================================================== */
-/* CHECKOUT MODAL (PASARELA DE PAGO EN LÍNEA)             */
+/* SELLER COMMISSIONS SECTION (FROM OFFICIAL FLYER)       */
+/* ====================================================== */
+.seller-program-section {
+  margin-top: 40px;
+  background: var(--cream-card);
+  color: var(--text-dark);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: 0 16px 40px rgba(35, 14, 5, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.65);
+}
+
+.seller-header-badge {
+  display: inline-block;
+  background: #5d7050;
+  color: var(--white);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 8px;
+}
+
+.seller-main-title {
+  font-family: var(--font-main);
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  font-weight: 900;
+  color: #35261e;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.commissions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 580px) {
+  .commissions-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.commission-box {
+  background: var(--white);
+  border: 2px solid #dcd0be;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  text-align: center;
+}
+
+.commission-range {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #605349;
+  text-transform: uppercase;
+}
+
+.commission-rate {
+  font-family: var(--font-main);
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: #b15529;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+.commission-unit {
+  font-size: 0.78rem;
+  color: #796c61;
+}
+
+.seller-notice-pill {
+  background: #f7ede2;
+  border-left: 4px solid #b15529;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 0.84rem;
+  color: #55453b;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* ====================================================== */
+/* CHECKOUT MODAL                                         */
 /* ====================================================== */
 .checkout-modal-overlay {
   display: none;
@@ -1250,7 +1310,7 @@ body {
 .checkout-modal-card {
   background: #faf6ef;
   color: var(--text-dark);
-  max-width: 680px;
+  max-width: 620px;
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
@@ -1301,7 +1361,7 @@ body {
 .checkout-header-title .svg-icon {
   width: 24px;
   height: 24px;
-  fill: #1f9d55;
+  fill: #5d7050;
 }
 
 .checkout-header-desc {
@@ -1330,9 +1390,7 @@ body {
   font-weight: 800;
   text-transform: uppercase;
   color: #6a5d51;
-  cursor: pointer;
   border: 1.5px solid transparent;
-  transition: all 0.2s ease;
 }
 
 .checkout-step-tab.active {
@@ -1354,7 +1412,7 @@ body {
   font-size: 0.75rem;
 }
 
-/* Customer Form Fields */
+/* Customer Form Fields - ONLY EXACT 4 FIELDS */
 .checkout-form-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1405,10 +1463,6 @@ body {
 }
 
 /* Payment Method Tabs in Modal */
-.payment-methods-selector {
-  margin-top: 18px;
-}
-
 .payment-options-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1443,9 +1497,9 @@ body {
 }
 
 .payment-method-card.active {
-  border-color: #1f9d55;
-  background: #f4fbf6;
-  box-shadow: 0 4px 14px rgba(31, 157, 85, 0.18);
+  border-color: #5d7050;
+  background: #f5f8f3;
+  box-shadow: 0 4px 14px rgba(93, 112, 80, 0.2);
 }
 
 .payment-method-card .svg-icon {
@@ -1480,70 +1534,77 @@ body {
   display: block;
 }
 
-/* Bank Accounts Info Box */
-.bank-account-item {
-  background: #fbf8f2;
-  border: 1px solid #e2d7c5;
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 12px;
+/* Google Pay Button Styles */
+.btn-gpay {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.bank-info-left {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.bank-name-badge {
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
   font-family: var(--font-main);
-  font-size: 0.98rem;
-  font-weight: 900;
-  color: #2b1f17;
-}
-
-.bank-account-num {
-  font-family: var(--font-main);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: 1px;
-  color: #647554;
-}
-
-.bank-account-holder {
-  font-size: 0.78rem;
-  color: #6b5f54;
-}
-
-.btn-copy-account {
-  background: #ece3d3;
+  letter-spacing: 0.5px;
+  padding: 16px 24px;
+  border-radius: var(--radius-full);
   border: none;
-  color: #3f3126;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 8px 12px;
-  border-radius: var(--radius-xs);
   cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-gpay:hover {
+  background: #202124;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+}
+
+.gpay-logo-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  flex-shrink: 0;
+  gap: 3px;
+  background: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: #3c4043;
+  font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: -0.5px;
 }
 
-.btn-copy-account:hover {
-  background: #647554;
-  color: var(--white);
+/* PayPal Button Styles */
+.btn-paypal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #0070ba;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  padding: 16px 24px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0, 112, 186, 0.35);
+  transition: all 0.25s ease;
 }
 
-.btn-copy-account .svg-icon {
-  width: 14px;
-  height: 14px;
-  fill: currentColor;
+.btn-paypal:hover {
+  background: #005ea6;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 112, 186, 0.45);
+}
+
+.btn-paypal .svg-icon {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
 }
 
 /* Online Order Confirmation Screen */
@@ -1560,14 +1621,14 @@ body {
 .confirm-success-icon {
   width: 64px;
   height: 64px;
-  background: #1f9d55;
+  background: #5d7050;
   color: var(--white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px auto;
-  box-shadow: 0 8px 24px rgba(31, 157, 85, 0.35);
+  box-shadow: 0 8px 24px rgba(93, 112, 80, 0.35);
 }
 
 .confirm-success-icon .svg-icon {
@@ -1637,134 +1698,6 @@ body {
   font-size: 0.9rem;
   padding: 4px 10px;
   border-radius: 4px;
-}
-
-/* ====================================================== */
-/* SECTION: PRIZE DETAILS & SPECS                         */
-/* ====================================================== */
-.prize-details-section {
-  margin-top: 45px;
-}
-
-.specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-top: 20px;
-}
-
-@media (max-width: 620px) {
-  .specs-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.spec-card {
-  background: rgba(35, 14, 5, 0.38);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 22px 20px;
-  backdrop-filter: blur(8px);
-}
-
-.spec-card-title {
-  font-family: var(--font-main);
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: 1px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--gold-light);
-  text-transform: uppercase;
-}
-
-.spec-card-title .svg-icon {
-  width: 22px;
-  height: 22px;
-  fill: currentColor;
-}
-
-.spec-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-size: 0.9rem;
-}
-
-.spec-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  opacity: 0.95;
-  line-height: 1.4;
-}
-
-.spec-list li .svg-icon {
-  flex-shrink: 0;
-  width: 17px;
-  height: 17px;
-  fill: var(--sage-light);
-  margin-top: 2px;
-}
-
-/* ====================================================== */
-/* SECTION: HOW IT WORKS                                  */
-/* ====================================================== */
-.steps-section {
-  margin-top: 45px;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 20px;
-}
-
-@media (max-width: 620px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.step-card {
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 22px 18px;
-  text-align: center;
-}
-
-.step-number {
-  width: 38px;
-  height: 38px;
-  background: var(--gold-accent);
-  color: #2b1f17;
-  border-radius: 50%;
-  font-family: var(--font-main);
-  font-size: 1.2rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 12px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-}
-
-.step-title {
-  font-family: var(--font-main);
-  font-size: 1.05rem;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
-
-.step-desc {
-  font-size: 0.85rem;
-  opacity: 0.88;
-  line-height: 1.45;
 }
 
 /* ====================================================== */
@@ -1841,12 +1774,10 @@ body {
   text-align: center;
 }
 
-.footer-brand {
-  font-family: var(--font-main);
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: -1px;
-  margin-bottom: 6px;
+.footer-brand-logo {
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 6px;
 }
 
 .footer-copy {
@@ -1915,7 +1846,7 @@ body {
 }
 
 .sticky-btn {
-  background: #1f9d55;
+  background: linear-gradient(135deg, #748967 0%, #5d7050 100%);
   color: var(--white);
   padding: 10px 18px;
   border-radius: var(--radius-full);
@@ -1926,8 +1857,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(31, 157, 85, 0.35);
-  border: none;
+  box-shadow: 0 4px 12px rgba(60, 75, 50, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
 }
 

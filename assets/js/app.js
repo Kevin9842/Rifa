@@ -1,4 +1,4 @@
-// Rifa Navideña 2026 - Control Lógico y Pasarela de Pago en Línea
+// Rifa Navideña 2026 - Control Lógico y Pasarela de Pago Digital
 document.addEventListener('DOMContentLoaded', () => {
   // Configuración General
   const TICKET_PRICE = 300;
@@ -38,27 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnProceedToPayment = document.getElementById('btn-proceed-to-payment');
   const btnBackToStep1 = document.getElementById('btn-back-to-step1');
 
-  // Campos de Comprador
+  // Campos de Comprador (Únicamente 4 datos oficiales)
   const inputBuyerName = document.getElementById('buyer-name');
   const inputBuyerId = document.getElementById('buyer-id');
   const inputBuyerPhone = document.getElementById('buyer-phone');
-  const inputBuyerEmail = document.getElementById('buyer-email');
+  const inputBuyerAddress = document.getElementById('buyer-address');
   const modalSummaryQty = document.getElementById('modal-summary-qty');
   const modalSummaryTotal = document.getElementById('modal-summary-total');
+  
+  // Montos en Botones de Pago
   const btnCardAmount = document.getElementById('btn-card-amount');
+  const btnGpayAmount = document.getElementById('btn-gpay-amount');
+  const btnPaypalAmount = document.getElementById('btn-paypal-amount');
 
   // Pestañas de Pago
   const paymentMethodCards = document.querySelectorAll('.payment-method-card');
   const paymentPanes = {
     card: document.getElementById('pane-card'),
-    bank: document.getElementById('pane-bank'),
+    gpay: document.getElementById('pane-gpay'),
     paypal: document.getElementById('pane-paypal')
   };
 
   // Botones de Confirmación de Pago
   const btnPayCard = document.getElementById('btn-pay-card');
-  const btnConfirmTransfer = document.getElementById('btn-confirm-transfer');
-  const btnConfirmPaypal = document.getElementById('btn-confirm-paypal');
+  const btnPayGpay = document.getElementById('btn-pay-gpay');
+  const btnPayPaypal = document.getElementById('btn-pay-paypal');
   const btnFinishCheckout = document.getElementById('btn-finish-checkout');
   const btnPrintReceipt = document.getElementById('btn-print-receipt');
   const linkAdvisorHelp = document.getElementById('link-advisor-help');
@@ -68,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const receiptBuyerName = document.getElementById('receipt-buyer-name');
   const receiptBuyerId = document.getElementById('receipt-buyer-id');
   const receiptBuyerPhone = document.getElementById('receipt-buyer-phone');
+  const receiptBuyerAddress = document.getElementById('receipt-buyer-address');
   const receiptTotalAmount = document.getElementById('receipt-total-amount');
   const receiptFoliosContainer = document.getElementById('receipt-folios-container');
 
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     name: '',
     id: '',
     phone: '',
-    email: ''
+    address: ''
   };
 
   // 1. Cronómetro de Cuenta Regresiva
@@ -133,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Actualización de Pedido
+  // 3. Actualización de Pedido y Montos
   function updateOrder(qty) {
     currentQty = Math.max(1, Math.min(100, parseInt(qty) || 1));
     if (stepperInput) stepperInput.value = currentQty;
@@ -146,7 +151,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stickyPriceDisplay) stickyPriceDisplay.innerText = `RD$ ${formattedTotal}`;
     if (modalSummaryQty) modalSummaryQty.innerText = currentQty;
     if (modalSummaryTotal) modalSummaryTotal.innerText = `RD$ ${formattedTotal}`;
+    
     if (btnCardAmount) btnCardAmount.innerText = `RD$ ${formattedTotal}`;
+    if (btnGpayAmount) btnGpayAmount.innerText = `RD$ ${formattedTotal}`;
+    if (btnPaypalAmount) btnPaypalAmount.innerText = `RD$ ${formattedTotal}`;
 
     // Sincronizar botones de paquetes
     packButtons.forEach(btn => {
@@ -201,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 4. Apertura y Cierre de Modal de Checkout
   function openCheckoutModal() {
     if (!modalCheckout) return;
-    // Resetear a paso 1
     showStep(1);
     modalCheckout.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -215,6 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnOpenCheckout) btnOpenCheckout.addEventListener('click', openCheckoutModal);
   if (stickyCheckoutBtn) stickyCheckoutBtn.addEventListener('click', openCheckoutModal);
+  if (heroTicketBtn) {
+    heroTicketBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openCheckoutModal();
+    });
+  }
   if (checkoutCloseBtn) checkoutCloseBtn.addEventListener('click', closeCheckoutModal);
 
   if (modalCheckout) {
@@ -225,41 +238,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 5. Navegación de Pasos de Checkout
   function showStep(stepNum) {
+    const stepsNav = document.getElementById('checkout-steps-nav');
     if (stepNum === 1) {
       if (step1) step1.style.display = 'block';
       if (step2) step2.style.display = 'none';
       if (stepSuccess) stepSuccess.style.display = 'none';
+      if (stepsNav) stepsNav.style.display = 'flex';
       if (tabStep1) tabStep1.classList.add('active');
       if (tabStep2) tabStep2.classList.remove('active');
     } else if (stepNum === 2) {
       if (step1) step1.style.display = 'none';
       if (step2) step2.style.display = 'block';
       if (stepSuccess) stepSuccess.style.display = 'none';
+      if (stepsNav) stepsNav.style.display = 'flex';
       if (tabStep1) tabStep1.classList.remove('active');
       if (tabStep2) tabStep2.classList.add('active');
     } else if (stepNum === 3) {
       if (step1) step1.style.display = 'none';
       if (step2) step2.style.display = 'none';
       if (stepSuccess) stepSuccess.style.display = 'block';
-      const stepsNav = document.getElementById('checkout-steps-nav');
       if (stepsNav) stepsNav.style.display = 'none';
     }
   }
 
   if (btnProceedToPayment) {
     btnProceedToPayment.addEventListener('click', () => {
-      // Validar datos de cliente
       const name = inputBuyerName ? inputBuyerName.value.trim() : '';
       const id = inputBuyerId ? inputBuyerId.value.trim() : '';
       const phone = inputBuyerPhone ? inputBuyerPhone.value.trim() : '';
-      const email = inputBuyerEmail ? inputBuyerEmail.value.trim() : '';
+      const address = inputBuyerAddress ? inputBuyerAddress.value.trim() : '';
 
-      if (!name || !id || !phone || !email) {
-        alert('Por favor complete todos los datos requeridos para registrar formalmente los boletos a su nombre.');
+      if (!name || !id || !phone || !address) {
+        alert('Por favor complete los 4 datos requeridos (Nombre, Cédula, Número y Dirección) para registrar formalmente los boletos a su nombre.');
         return;
       }
 
-      currentBuyer = { name, id, phone, email };
+      currentBuyer = { name, id, phone, address };
       showStep(2);
     });
   }
@@ -304,24 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Botones de Copiado de Cuentas Bancarias
-  const copyButtons = document.querySelectorAll('.btn-copy-account');
-  copyButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const textToCopy = btn.getAttribute('data-copy');
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(textToCopy).then(() => {
-          const originalText = btn.innerHTML;
-          btn.innerHTML = '<span>¡Copiado!</span>';
-          setTimeout(() => {
-            btn.innerHTML = originalText;
-          }, 2000);
-        });
-      }
-    });
-  });
-
-  // 8. Finalización y Emisión del Comprobante
+  // 7. Finalización y Emisión del Comprobante
   function completePayment(methodName) {
     const total = (currentQty * TICKET_PRICE).toLocaleString('es-DO');
     const randomOrderId = 'DTC-2026-' + Math.floor(1000 + Math.random() * 9000);
@@ -330,6 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (receiptBuyerName) receiptBuyerName.innerText = currentBuyer.name || 'Titular Registrado';
     if (receiptBuyerId) receiptBuyerId.innerText = currentBuyer.id || 'N/D';
     if (receiptBuyerPhone) receiptBuyerPhone.innerText = currentBuyer.phone || 'N/D';
+    if (receiptBuyerAddress) receiptBuyerAddress.innerText = currentBuyer.address || 'N/D';
     if (receiptTotalAmount) receiptTotalAmount.innerText = `RD$ ${total} (${methodName})`;
 
     if (receiptFoliosContainer) {
@@ -345,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showStep(3);
   }
 
+  // Pago con Tarjeta
   if (btnPayCard) {
     btnPayCard.addEventListener('click', () => {
       const cardNum = cardNumberInput ? cardNumberInput.value.replace(/\s/g, '') : '';
@@ -352,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Por favor ingrese un número de tarjeta válido.');
         return;
       }
-      btnPayCard.innerHTML = '<span>Procesando transacción segura...</span>';
+      btnPayCard.innerHTML = '<span>Procesando pago seguro...</span>';
       setTimeout(() => {
         btnPayCard.innerHTML = '<span>Pagar de Forma Segura</span>';
         completePayment('Tarjeta de Crédito/Débito');
@@ -360,27 +359,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (btnConfirmTransfer) {
-    btnConfirmTransfer.addEventListener('click', () => {
-      const refInput = document.getElementById('bank-reference');
-      const ref = refInput ? refInput.value.trim() : '';
-      if (!ref) {
-        alert('Por favor ingrese el número de referencia o autorización de su transferencia.');
-        return;
-      }
-      completePayment('Transferencia Bancaria - Ref: ' + ref);
+  // Pago con Google Pay
+  if (btnPayGpay) {
+    btnPayGpay.addEventListener('click', () => {
+      const originalContent = btnPayGpay.innerHTML;
+      btnPayGpay.innerHTML = '<span>Autenticando con Google Pay...</span>';
+      setTimeout(() => {
+        btnPayGpay.innerHTML = originalContent;
+        completePayment('Google Pay');
+      }, 1100);
     });
   }
 
-  if (btnConfirmPaypal) {
-    btnConfirmPaypal.addEventListener('click', () => {
-      const zelleInput = document.getElementById('zelle-reference');
-      const ref = zelleInput ? zelleInput.value.trim() : '';
-      if (!ref) {
-        alert('Por favor ingrese la referencia o el nombre con el que envió por PayPal / Zelle.');
-        return;
-      }
-      completePayment('PayPal / Zelle - Ref: ' + ref);
+  // Pago con PayPal
+  if (btnPayPaypal) {
+    btnPayPaypal.addEventListener('click', () => {
+      const originalContent = btnPayPaypal.innerHTML;
+      btnPayPaypal.innerHTML = '<span>Conectando con PayPal...</span>';
+      setTimeout(() => {
+        btnPayPaypal.innerHTML = originalContent;
+        completePayment('PayPal');
+      }, 1100);
     });
   }
 
@@ -393,13 +392,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnFinishCheckout) {
     btnFinishCheckout.addEventListener('click', () => {
       closeCheckoutModal();
-      const stepsNav = document.getElementById('checkout-steps-nav');
-      if (stepsNav) stepsNav.style.display = 'flex';
       showStep(1);
     });
   }
 
-  // 9. FAQ Accordion
+  // 8. FAQ Accordion
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const question = item.querySelector('.faq-question');
@@ -412,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 10. Modal de Bases del Concurso
+  // 9. Modal de Bases del Concurso
   const modalTerms = document.getElementById('modal-terms');
   const modalOpenBtns = document.querySelectorAll('.open-terms-modal');
   const modalCloseBtn = document.getElementById('modal-close-btn');
