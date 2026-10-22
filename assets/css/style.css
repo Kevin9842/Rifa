@@ -1,8 +1,9 @@
 :root {
-  --bg-gradient-start: #ad5428;
-  --bg-gradient-mid: #96431c;
-  --bg-gradient-end: #742e0f;
-  --bg-darker: #5b2108;
+  --bg-gradient-start: #b15529;
+  --bg-gradient-mid: #9a441c;
+  --bg-gradient-deep: #813412;
+  --bg-gradient-end: #612209;
+  --bg-darker: #461605;
   
   --sage-card: #8b9c7b;
   --sage-dark: #647554;
@@ -48,7 +49,13 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-mid) 45%, var(--bg-gradient-end) 100%);
+  background: linear-gradient(180deg, 
+    var(--bg-gradient-start) 0%, 
+    var(--bg-gradient-mid) 22%, 
+    var(--bg-gradient-deep) 55%, 
+    var(--bg-gradient-end) 85%, 
+    var(--bg-darker) 100%
+  );
   color: var(--white);
   min-height: 100vh;
   position: relative;
@@ -58,7 +65,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background Atmosphere */
+/* ====================================================== */
+/* BACKGROUND ATMOSPHERE & RICH SVG DECORATIONS THROUGHOUT */
+/* ====================================================== */
 .page-decorations {
   position: absolute;
   top: 0;
@@ -79,7 +88,7 @@ body {
   display: flex;
   justify-content: space-around;
   z-index: 2;
-  opacity: 0.65;
+  opacity: 0.7;
 }
 
 .pennant {
@@ -101,7 +110,7 @@ body {
   height: 42px;
 }
 
-/* Subtle Skyline Silhouette */
+/* Skyline Silhouette */
 .silhouette-city {
   position: absolute;
   top: 140px;
@@ -114,36 +123,114 @@ body {
   pointer-events: none;
 }
 
-/* Palm Fronds */
-.palm-left, .palm-right {
+/* Continuous Palm Silhouettes along both left and right sides */
+.bg-svg-decor {
   position: absolute;
-  width: 280px;
-  height: 520px;
-  opacity: 0.11;
   pointer-events: none;
+  opacity: 0.10;
+  fill: none;
+  stroke: #250901;
+  stroke-width: 6;
+  stroke-linecap: round;
 }
 
-.palm-left {
-  top: 30px;
+.palm-top-left {
+  top: 40px;
   left: -50px;
-  transform: rotate(12deg);
+  width: 260px;
+  height: 480px;
+  transform: rotate(10deg);
 }
 
-.palm-right {
-  top: 80px;
-  right: -60px;
-  transform: rotate(-22deg) scaleX(-1);
+.palm-top-right {
+  top: 90px;
+  right: -50px;
+  width: 260px;
+  height: 480px;
+  transform: rotate(-20deg) scaleX(-1);
 }
 
-/* Stylized Geometric Watermark */
+.palm-mid-left {
+  top: 900px;
+  left: -70px;
+  width: 300px;
+  height: 520px;
+  transform: rotate(25deg);
+  opacity: 0.08;
+}
+
+.palm-mid-right {
+  top: 1350px;
+  right: -80px;
+  width: 320px;
+  height: 540px;
+  transform: rotate(-15deg) scaleX(-1);
+  opacity: 0.08;
+}
+
+.palm-bottom-left {
+  top: 1950px;
+  left: -60px;
+  width: 280px;
+  height: 500px;
+  transform: rotate(18deg);
+  opacity: 0.07;
+}
+
+.palm-bottom-right {
+  top: 2450px;
+  right: -70px;
+  width: 300px;
+  height: 520px;
+  transform: rotate(-25deg) scaleX(-1);
+  opacity: 0.07;
+}
+
+/* Golden Starbursts / Stars of Bethlehem throughout the page background */
+.starburst {
+  position: absolute;
+  pointer-events: none;
+  fill: var(--gold-light);
+  opacity: 0.22;
+  animation: starTwinkle 6s ease-in-out infinite alternate;
+}
+
+.star-1 { top: 90px; left: 12%; width: 22px; height: 22px; animation-delay: 0s; }
+.star-2 { top: 160px; right: 14%; width: 28px; height: 28px; animation-delay: 1.5s; opacity: 0.3; }
+.star-3 { top: 480px; left: 6%; width: 18px; height: 18px; animation-delay: 2.2s; }
+.star-4 { top: 720px; right: 8%; width: 26px; height: 26px; animation-delay: 0.8s; opacity: 0.28; }
+.star-5 { top: 1150px; left: 8%; width: 24px; height: 24px; animation-delay: 3s; }
+.star-6 { top: 1450px; right: 10%; width: 20px; height: 20px; animation-delay: 1.8s; }
+.star-7 { top: 1850px; left: 5%; width: 26px; height: 26px; animation-delay: 2.7s; }
+.star-8 { top: 2200px; right: 7%; width: 22px; height: 22px; animation-delay: 0.4s; }
+.star-9 { top: 2600px; left: 12%; width: 24px; height: 24px; animation-delay: 1.2s; }
+
+@keyframes starTwinkle {
+  0% { transform: scale(0.85); opacity: 0.15; }
+  50% { transform: scale(1.15); opacity: 0.35; }
+  100% { transform: scale(0.85); opacity: 0.15; }
+}
+
+/* Watermark Monogram Brand Symbol (from bottom right of flyer) */
 .watermark-brand {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  width: 130px;
-  height: 130px;
-  opacity: 0.12;
+  bottom: 25px;
+  right: 25px;
+  width: 140px;
+  height: 140px;
+  opacity: 0.10;
   pointer-events: none;
+}
+
+/* Subtle Ribbon Waves through the background */
+.ribbon-wave-svg {
+  position: absolute;
+  width: 100%;
+  max-width: 1200px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  opacity: 0.06;
 }
 
 /* Main Container */
@@ -155,7 +242,32 @@ body {
   padding: 30px 20px 120px 20px;
 }
 
-/* Flyer Hero Section */
+/* Section Ornamental Dividers */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 45px auto 10px auto;
+  opacity: 0.45;
+}
+
+.divider-line {
+  height: 1px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+.divider-diamond {
+  width: 7px;
+  height: 7px;
+  background: var(--gold-light);
+  transform: rotate(45deg);
+}
+
+/* ====================================================== */
+/* HERO SECTION (FAITHFUL FLYER REPLICA)                  */
+/* ====================================================== */
 .flyer-hero {
   text-align: center;
   position: relative;
@@ -467,7 +579,7 @@ body {
   top: 50%;
   width: 12px;
   height: 12px;
-  background: var(--bg-terracotta);
+  background: var(--bg-gradient-start);
   border-radius: 50%;
   transform: translateY(-50%);
 }
@@ -552,7 +664,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* Urgency Warning Note */
+/* Urgency Price Notice */
 .urgency-warning-note {
   margin-top: 14px;
   font-family: var(--font-main);
@@ -631,7 +743,7 @@ body {
 }
 
 /* ====================================================== */
-/* SECTION: COUNTDOWN & STATUS (SERIOUS, CLEAN DESIGN)   */
+/* SECTION: COUNTDOWN & STATUS                            */
 /* ====================================================== */
 .countdown-section {
   margin-top: 40px;
@@ -749,7 +861,7 @@ body {
 }
 
 /* ====================================================== */
-/* SECTION: TICKET SELECTOR & ORDER (CLEAN & ELEGANT)    */
+/* SECTION: TICKET SELECTOR & ORDER                       */
 /* ====================================================== */
 .ticket-purchase-card {
   margin-top: 36px;
@@ -1013,37 +1125,70 @@ body {
   line-height: 1;
 }
 
-/* WhatsApp CTA Button */
-.btn-whatsapp-buy {
+/* ====================================================== */
+/* ONLINE PAYMENT METHODS BANNER & BUTTONS                */
+/* ====================================================== */
+.payment-trust-badges {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: var(--radius-sm);
+  border: 1px solid #e2d7c5;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #4b3e34;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trust-badge-item .svg-icon {
+  width: 16px;
+  height: 16px;
+  fill: #647554;
+}
+
+/* Primary Online Checkout Action Button */
+.btn-online-checkout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   width: 100%;
-  margin-top: 18px;
-  background: #1f9d55;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #1f9d55 0%, #177a41 100%);
   color: var(--white);
   font-family: var(--font-main);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 900;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 16px 24px;
+  padding: 18px 24px;
   border-radius: var(--radius-full);
   text-decoration: none;
-  box-shadow: 0 8px 22px rgba(31, 157, 85, 0.35);
+  box-shadow: 0 10px 25px rgba(31, 157, 85, 0.4);
   transition: all 0.25s ease;
   border: none;
   cursor: pointer;
 }
 
-.btn-whatsapp-buy:hover {
-  background: #178345;
+.btn-online-checkout:hover {
+  background: linear-gradient(135deg, #24ad5f 0%, #1a884a 100%);
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(31, 157, 85, 0.45);
+  box-shadow: 0 14px 30px rgba(31, 157, 85, 0.5);
 }
 
-.btn-whatsapp-buy .svg-icon {
+.btn-online-checkout .svg-icon {
   width: 24px;
   height: 24px;
   fill: currentColor;
@@ -1064,6 +1209,434 @@ body {
   width: 15px;
   height: 15px;
   fill: #647554;
+}
+
+/* Secondary Advisor Option */
+.secondary-support-opt {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.84rem;
+  color: #6a5e55;
+}
+
+.secondary-support-opt a {
+  color: #3b502e;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* ====================================================== */
+/* CHECKOUT MODAL (PASARELA DE PAGO EN LÍNEA)             */
+/* ====================================================== */
+.checkout-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.checkout-modal-overlay.active {
+  display: flex;
+}
+
+.checkout-modal-card {
+  background: #faf6ef;
+  color: var(--text-dark);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.checkout-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: #e4d8c7;
+  border: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+
+.checkout-modal-close:hover {
+  background: #cfbeaa;
+}
+
+.checkout-header {
+  border-bottom: 1px solid #ded2c0;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+
+.checkout-header-title {
+  font-family: var(--font-main);
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #342419;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkout-header-title .svg-icon {
+  width: 24px;
+  height: 24px;
+  fill: #1f9d55;
+}
+
+.checkout-header-desc {
+  font-size: 0.88rem;
+  color: #63554a;
+  margin-top: 4px;
+}
+
+/* Steps Indicator */
+.checkout-steps {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.checkout-step-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: #ede3d2;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #6a5d51;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.checkout-step-tab.active {
+  background: var(--white);
+  color: #2b1f17;
+  border-color: #647554;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+}
+
+.step-num-pill {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #647554;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+/* Customer Form Fields */
+.checkout-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 550px) {
+  .checkout-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #4b3d33;
+}
+
+.form-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid #d4c7b4;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--white);
+  color: #221a15;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #647554;
+  box-shadow: 0 0 0 3px rgba(100, 117, 84, 0.15);
+}
+
+/* Payment Method Tabs in Modal */
+.payment-methods-selector {
+  margin-top: 18px;
+}
+
+.payment-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 580px) {
+  .payment-options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.payment-method-card {
+  background: var(--white);
+  border: 2px solid #dcd0bd;
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.payment-method-card:hover {
+  border-color: #647554;
+  transform: translateY(-2px);
+}
+
+.payment-method-card.active {
+  border-color: #1f9d55;
+  background: #f4fbf6;
+  box-shadow: 0 4px 14px rgba(31, 157, 85, 0.18);
+}
+
+.payment-method-card .svg-icon {
+  width: 28px;
+  height: 28px;
+  fill: #342419;
+}
+
+.payment-method-name {
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #342419;
+}
+
+.payment-method-sub {
+  font-size: 0.72rem;
+  color: #6b5d51;
+}
+
+/* Payment Panes */
+.payment-pane {
+  display: none;
+  background: var(--white);
+  border: 1px solid #dcd0be;
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.payment-pane.active {
+  display: block;
+}
+
+/* Bank Accounts Info Box */
+.bank-account-item {
+  background: #fbf8f2;
+  border: 1px solid #e2d7c5;
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bank-info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bank-name-badge {
+  font-family: var(--font-main);
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #2b1f17;
+}
+
+.bank-account-num {
+  font-family: var(--font-main);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #647554;
+}
+
+.bank-account-holder {
+  font-size: 0.78rem;
+  color: #6b5f54;
+}
+
+.btn-copy-account {
+  background: #ece3d3;
+  border: none;
+  color: #3f3126;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 8px 12px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-copy-account:hover {
+  background: #647554;
+  color: var(--white);
+}
+
+.btn-copy-account .svg-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Online Order Confirmation Screen */
+.order-confirmation-screen {
+  display: none;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.order-confirmation-screen.active {
+  display: block;
+}
+
+.confirm-success-icon {
+  width: 64px;
+  height: 64px;
+  background: #1f9d55;
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+  box-shadow: 0 8px 24px rgba(31, 157, 85, 0.35);
+}
+
+.confirm-success-icon .svg-icon {
+  width: 36px;
+  height: 36px;
+  fill: var(--white);
+}
+
+.confirm-title {
+  font-family: var(--font-main);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #2b1f17;
+  margin-bottom: 6px;
+}
+
+.confirm-subtitle {
+  font-size: 0.95rem;
+  color: #5c4e43;
+  margin-bottom: 22px;
+}
+
+.digital-receipt-box {
+  background: var(--white);
+  border: 2px dashed #cfc1ad;
+  border-radius: var(--radius-md);
+  padding: 22px;
+  text-align: left;
+  margin-bottom: 22px;
+}
+
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f0e6d8;
+}
+
+.receipt-row:last-child {
+  border-bottom: none;
+}
+
+.receipt-label {
+  color: #6b5c51;
+  font-weight: 600;
+}
+
+.receipt-value {
+  color: #221a15;
+  font-weight: 800;
+}
+
+.receipt-folios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.receipt-folio-tag {
+  background: #f1f6ed;
+  border: 1px solid #bcd0b2;
+  color: #3b532c;
+  font-family: var(--font-main);
+  font-weight: 900;
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border-radius: 4px;
 }
 
 /* ====================================================== */
@@ -1354,6 +1927,8 @@ body {
   align-items: center;
   gap: 8px;
   box-shadow: 0 4px 12px rgba(31, 157, 85, 0.35);
+  border: none;
+  cursor: pointer;
 }
 
 .sticky-btn .svg-icon {
