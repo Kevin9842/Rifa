@@ -265,20 +265,7 @@ body {
   padding-bottom: 25px;
 }
 
-/* Top Official Logo */
-.top-official-brand-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-}
 
-.brand-logo-pill {
-  height: 52px;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-}
 
 .top-badge-season {
   display: inline-block;
@@ -670,6 +657,25 @@ body {
   font-family: var(--font-main);
 }
 
+.organizer-logo {
+  font-family: var(--font-main);
+  font-size: 1.95rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--white);
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.organizer-logo small {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-left: 3px;
+  opacity: 0.88;
+}
+
 .contact-phone-link {
   display: inline-flex;
   align-items: center;
@@ -993,31 +999,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-.btn-shuffle {
-  background: transparent;
-  border: 1px solid #647554;
-  color: #647554;
-  font-size: 0.76rem;
-  font-weight: 800;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
 
-.btn-shuffle .svg-icon {
-  width: 13px;
-  height: 13px;
-  fill: currentColor;
-}
-
-.btn-shuffle:hover {
-  background: #647554;
-  color: var(--white);
-}
 
 .ticket-pills-list {
   display: flex;
@@ -1173,117 +1155,9 @@ body {
   fill: #647554;
 }
 
-/* ====================================================== */
-/* OFFICIAL TICKET SHOWCASE SECTION                       */
-/* ====================================================== */
-.official-ticket-preview-card {
-  margin-top: 40px;
-  background: rgba(45, 17, 7, 0.35);
-  border: 1.5px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 24px 20px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-  text-align: center;
-}
 
-.ticket-full-img {
-  width: 100%;
-  max-width: 660px;
-  height: auto;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
-  margin-top: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
 
-/* ====================================================== */
-/* SELLER COMMISSIONS SECTION (FROM OFFICIAL FLYER)       */
-/* ====================================================== */
-.seller-program-section {
-  margin-top: 40px;
-  background: var(--cream-card);
-  color: var(--text-dark);
-  border-radius: var(--radius-lg);
-  padding: 28px 24px;
-  box-shadow: 0 16px 40px rgba(35, 14, 5, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.65);
-}
 
-.seller-header-badge {
-  display: inline-block;
-  background: #5d7050;
-  color: var(--white);
-  font-family: var(--font-main);
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 4px 14px;
-  border-radius: var(--radius-full);
-  margin-bottom: 8px;
-}
-
-.seller-main-title {
-  font-family: var(--font-main);
-  font-size: clamp(1.4rem, 4vw, 1.85rem);
-  font-weight: 900;
-  color: #35261e;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.commissions-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-@media (max-width: 580px) {
-  .commissions-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.commission-box {
-  background: var(--white);
-  border: 2px solid #dcd0be;
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  text-align: center;
-}
-
-.commission-range {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #605349;
-  text-transform: uppercase;
-}
-
-.commission-rate {
-  font-family: var(--font-main);
-  font-size: 1.65rem;
-  font-weight: 900;
-  color: #b15529;
-  line-height: 1.1;
-  margin-top: 2px;
-}
-
-.commission-unit {
-  font-size: 0.78rem;
-  color: #796c61;
-}
-
-.seller-notice-pill {
-  background: #f7ede2;
-  border-left: 4px solid #b15529;
-  padding: 10px 14px;
-  border-radius: 4px;
-  font-size: 0.84rem;
-  color: #55453b;
-  line-height: 1.4;
-  text-align: left;
-}
 
 /* ====================================================== */
 /* CHECKOUT MODAL                                         */
@@ -1774,10 +1648,24 @@ body {
   text-align: center;
 }
 
-.footer-brand-logo {
-  height: 48px;
-  margin-bottom: 8px;
-  border-radius: 6px;
+.footer-brand {
+  font-family: var(--font-main);
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -1px;
+  color: var(--white);
+  display: inline-flex;
+  align-items: baseline;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.footer-brand small {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  margin-left: 3px;
+  opacity: 0.88;
 }
 
 .footer-copy {

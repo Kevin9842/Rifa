@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const summaryQty = document.getElementById('summary-qty');
   const summaryTotal = document.getElementById('summary-total');
   const ticketsListContainer = document.getElementById('tickets-list-container');
-  const btnShuffle = document.getElementById('btn-shuffle-lucky');
   const stickyPriceDisplay = document.getElementById('sticky-price-display');
 
   // Elementos DOM - Checkout Modal
@@ -65,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnPayPaypal = document.getElementById('btn-pay-paypal');
   const btnFinishCheckout = document.getElementById('btn-finish-checkout');
   const btnPrintReceipt = document.getElementById('btn-print-receipt');
+  const btnDownloadTicket = document.getElementById('btn-download-ticket');
   const linkAdvisorHelp = document.getElementById('link-advisor-help');
 
   // Recibo Digital
@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     luckyNumbers.forEach((num) => {
       const pill = document.createElement('div');
       pill.className = 'ticket-pill';
-      pill.innerHTML = `<span class="pill-dot"></span> Folio #${num}`;
+      pill.innerHTML = `<span class="pill-dot"></span> Boleto #${num}`;
       ticketsListContainer.appendChild(pill);
     });
   }
@@ -197,12 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  if (btnShuffle) {
-    btnShuffle.addEventListener('click', () => {
-      luckyNumbers = generateLuckyNumbers(currentQty);
-      renderLuckyNumbers();
-    });
-  }
+
 
   updateOrder(currentQty);
 
@@ -335,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
       luckyNumbers.forEach(n => {
         const tag = document.createElement('span');
         tag.className = 'receipt-folio-tag';
-        tag.innerText = `Folio #${n}`;
+        tag.innerText = `Boleto #${n}`;
         receiptFoliosContainer.appendChild(tag);
       });
     }
@@ -386,6 +381,83 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnPrintReceipt) {
     btnPrintReceipt.addEventListener('click', () => {
       window.print();
+    });
+  }
+
+  // Descarga del Boleto Oficial Certificado
+  if (btnDownloadTicket) {
+    btnDownloadTicket.addEventListener('click', () => {
+      const orderId = receiptOrderId ? receiptOrderId.innerText : 'DTC-2026';
+      const name = currentBuyer.name || 'Participante Registrado';
+      const id = currentBuyer.id || 'N/D';
+      const phone = currentBuyer.phone || 'N/D';
+      const address = currentBuyer.address || 'N/D';
+      const foliosHtml = luckyNumbers.map(n => `<span style="display:inline-block; background:#637654; color:#ffffff; font-size:18px; font-weight:800; padding:6px 14px; border-radius:6px; margin:4px;">Boleto #${n}</span>`).join(' ');
+
+      const ticketHtml = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boleto Oficial - ${orderId} | Rifa Navideña 2026</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5efe6; color: #2d180d; padding: 30px 15px; margin: 0; }
+    .ticket-card { max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 12px; border: 2px solid #b15529; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
+    .header { background: linear-gradient(135deg, #b15529, #7a3212); color: #ffffff; padding: 22px; text-align: center; }
+    .brand { font-size: 24px; font-weight: 900; letter-spacing: 1px; }
+    .brand small { font-size: 14px; opacity: 0.9; margin-left: 2px; }
+    .header h1 { margin: 6px 0 0 0; font-size: 22px; text-transform: uppercase; }
+    .header p { margin: 4px 0 0 0; opacity: 0.9; font-size: 13px; }
+    .body { padding: 24px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; background: #faf5ed; padding: 16px; border-radius: 8px; border: 1px solid #e7ded0; }
+    .info-item { font-size: 14px; }
+    .info-item strong { display: block; color: #7a3212; font-size: 11px; text-transform: uppercase; margin-bottom: 2px; }
+    .folios-box { text-align: center; margin: 20px 0; padding: 18px; border: 2px dashed #637654; border-radius: 8px; background: #f2f7ef; }
+    .prizes { font-size: 12px; color: #665c54; border-top: 1px solid #eedecb; padding-top: 14px; text-align: center; line-height: 1.5; }
+    .footer { background: #351b0e; color: #ffffff; text-align: center; padding: 12px; font-size: 12px; }
+    @media print { body { background: #ffffff; padding: 0; } .ticket-card { box-shadow: none; border: 1px solid #000; } }
+  </style>
+</head>
+<body>
+  <div class="ticket-card">
+    <div class="header">
+      <div class="brand">dtc<small>&CO</small></div>
+      <h1>Boleto Oficial de Participación</h1>
+      <p>Rifa Navideña 2026 • 20 de Diciembre • Monte Plata</p>
+    </div>
+    <div class="body">
+      <div class="info-grid">
+        <div class="info-item"><strong>No. Comprobante:</strong> ${orderId}</div>
+        <div class="info-item"><strong>Titular Registrado:</strong> ${name}</div>
+        <div class="info-item"><strong>Cédula:</strong> ${id}</div>
+        <div class="info-item"><strong>Número de Teléfono:</strong> ${phone}</div>
+        <div class="info-item" style="grid-column: span 2;"><strong>Dirección:</strong> ${address}</div>
+      </div>
+      <div class="folios-box">
+        <strong style="display:block; margin-bottom:10px; color:#3e5033; font-size:14px; letter-spacing:0.5px;">BOLETOS ASIGNADOS Y REGISTRADOS OFICIALMENTE</strong>
+        <div>${foliosHtml}</div>
+      </div>
+      <div class="prizes">
+        <strong>Premios a sortear:</strong><br>
+        1.er Lugar: Honda CR-V Touring 2022 | 2.º Lugar: Supermoto Husqvarna 701 (2026) | 3.er Lugar: 10 premios de RD$10,000 en efectivo
+      </div>
+    </div>
+    <div class="footer">
+      Sorteo oficial certificado por la administración de dtc & co en Monte Plata, R.D.
+    </div>
+  </div>
+</body>
+</html>`;
+
+      const blob = new Blob([ticketHtml], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `Boleto-Rifa-2026-${orderId.replace('#', '')}.html`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     });
   }
 
