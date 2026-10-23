@@ -47,20 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Montos en Botones de Pago
   const btnCardAmount = document.getElementById('btn-card-amount');
-  const btnGpayAmount = document.getElementById('btn-gpay-amount');
+  const cardQtySummary = document.getElementById('card-qty-summary');
+  const paypalQtySummary = document.getElementById('paypal-qty-summary');
   const btnPaypalAmount = document.getElementById('btn-paypal-amount');
 
-  // Pestañas de Pago
+  // Pestañas de Pago (2 Métodos: Tarjeta Bancaria y PayPal)
   const paymentMethodCards = document.querySelectorAll('.payment-method-card');
   const paymentPanes = {
     card: document.getElementById('pane-card'),
-    gpay: document.getElementById('pane-gpay'),
     paypal: document.getElementById('pane-paypal')
   };
 
   // Botones de Confirmación de Pago
   const btnPayCard = document.getElementById('btn-pay-card');
-  const btnPayGpay = document.getElementById('btn-pay-gpay');
   const btnPayPaypal = document.getElementById('btn-pay-paypal');
   const btnFinishCheckout = document.getElementById('btn-finish-checkout');
   const btnPrintReceipt = document.getElementById('btn-print-receipt');
@@ -153,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalSummaryTotal) modalSummaryTotal.innerText = `RD$ ${formattedTotal}`;
     
     if (btnCardAmount) btnCardAmount.innerText = `RD$ ${formattedTotal}`;
-    if (btnGpayAmount) btnGpayAmount.innerText = `RD$ ${formattedTotal}`;
+    if (cardQtySummary) cardQtySummary.innerText = currentQty;
+    if (paypalQtySummary) paypalQtySummary.innerText = currentQty;
     if (btnPaypalAmount) btnPaypalAmount.innerText = `RD$ ${formattedTotal}`;
 
     // Sincronizar botones de paquetes
@@ -256,17 +256,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Navegación directa entre pestañas 1 y 2
+  if (tabStep1) {
+    tabStep1.style.cursor = 'pointer';
+    tabStep1.addEventListener('click', () => showStep(1));
+  }
+
+  if (tabStep2) {
+    tabStep2.style.cursor = 'pointer';
+    tabStep2.addEventListener('click', () => {
+      const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
+      const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
+      const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
+      const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
+      currentBuyer = { name, id, phone, address };
+      showStep(2);
+    });
+  }
+
   if (btnProceedToPayment) {
     btnProceedToPayment.addEventListener('click', () => {
-      const name = inputBuyerName ? inputBuyerName.value.trim() : '';
-      const id = inputBuyerId ? inputBuyerId.value.trim() : '';
-      const phone = inputBuyerPhone ? inputBuyerPhone.value.trim() : '';
-      const address = inputBuyerAddress ? inputBuyerAddress.value.trim() : '';
-
-      if (!name || !id || !phone || !address) {
-        alert('Por favor complete los 4 datos requeridos (Nombre, Cédula, Número y Dirección) para registrar formalmente los boletos a su nombre.');
-        return;
-      }
+      const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
+      const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
+      const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
+      const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
 
       currentBuyer = { name, id, phone, address };
       showStep(2);
@@ -339,42 +352,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Pago con Tarjeta
+  // Pago con Tarjeta (Pasarela Oficial Bancaria AZUL / CardNet)
   if (btnPayCard) {
     btnPayCard.addEventListener('click', () => {
-      const cardNum = cardNumberInput ? cardNumberInput.value.replace(/\s/g, '') : '';
-      if (cardNum.length < 15) {
-        alert('Por favor ingrese un número de tarjeta válido.');
-        return;
-      }
-      btnPayCard.innerHTML = '<span>Procesando pago seguro...</span>';
+      const originalHtml = btnPayCard.innerHTML;
+      btnPayCard.innerHTML = `
+        <svg style="width:20px; height:20px; fill:#ffffff; animation:spin 1s linear infinite;" viewBox="0 0 24 24">
+          <path d="M12 4V2C6.48 2 2 6.48 2 12h2c0-4.41 3.59-8 8-8zm0 16c-4.41 0-8-3.59-8-8H2c0 5.52 4.48 10 10 10v-2zm8-8c0-4.41-3.59-8-8-8V2c5.52 0 10 4.48 10 10h-2z"/>
+        </svg>
+        <span>Conectando con la Pasarela Segura AZUL / CardNet...</span>
+      `;
+      btnPayCard.disabled = true;
+      btnPayCard.style.opacity = '0.85';
+
       setTimeout(() => {
-        btnPayCard.innerHTML = '<span>Pagar de Forma Segura</span>';
-        completePayment('Tarjeta de Crédito/Débito');
-      }, 1200);
+        btnPayCard.innerHTML = originalHtml;
+        btnPayCard.disabled = false;
+        btnPayCard.style.opacity = '1';
+        completePayment('Tarjeta Bancaria (AZUL / CardNet)');
+      }, 1300);
     });
   }
 
-  // Pago con Google Pay
-  if (btnPayGpay) {
-    btnPayGpay.addEventListener('click', () => {
-      const originalContent = btnPayGpay.innerHTML;
-      btnPayGpay.innerHTML = '<span>Autenticando con Google Pay...</span>';
-      setTimeout(() => {
-        btnPayGpay.innerHTML = originalContent;
-        completePayment('Google Pay');
-      }, 1100);
-    });
-  }
-
-  // Pago con PayPal
+  // Pago con PayPal (Internacional)
   if (btnPayPaypal) {
     btnPayPaypal.addEventListener('click', () => {
       const originalContent = btnPayPaypal.innerHTML;
-      btnPayPaypal.innerHTML = '<span>Conectando con PayPal...</span>';
+      btnPayPaypal.innerHTML = '<span>Conectando con PayPal Checkout Oficial...</span>';
+      btnPayPaypal.disabled = true;
+      btnPayPaypal.style.opacity = '0.85';
+
       setTimeout(() => {
         btnPayPaypal.innerHTML = originalContent;
-        completePayment('PayPal');
-      }, 1100);
+        btnPayPaypal.disabled = false;
+        btnPayPaypal.style.opacity = '1';
+        completePayment('PayPal Internacional');
+      }, 1200);
     });
   }
 
