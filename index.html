@@ -194,7 +194,7 @@
             <span class="cta-text">Compra tu boleto y participa ahora:</span>
           </div>
 
-          <a href="#comprar" class="flyer-ticket-stub" id="hero-ticket-btn" title="Ir a compra en línea de boletos">
+          <a href="#comprar" class="flyer-ticket-stub" id="hero-ticket-btn" title="Apartar boletos para la rifa">
             <span class="ticket-stub-label">Boleto</span>
             <span class="ticket-stub-price"><small>RD$</small>300</span>
           </a>
@@ -266,11 +266,10 @@
       <div class="divider-line"></div>
     </div>
 
-    <!-- ========================================== -->
     <!-- SECTION 1: COUNTDOWN & STATUS              -->
     <!-- ========================================== -->
     <section class="countdown-section">
-      <p class="section-label">Sorteo Certificado en Vivo</p>
+      <p class="section-label">Gran Sorteo Oficial</p>
       <h3 class="section-heading">Cuenta regresiva para el evento</h3>
 
       <div class="countdown-grid">
@@ -301,11 +300,101 @@
     </div>
 
     <!-- ========================================== -->
+    <!-- SECTION: EXHIBICIÓN Y VIDEOS OFICIALES     -->
+    <!-- ========================================== -->
+    <!-- ========================================== -->
+    <!-- SECTION: EXHIBICIÓN DE PREMIOS             -->
+    <!-- ========================================== -->
+    <section class="media-showcase-section" id="galeria-premios">
+      <div class="media-section-header">
+        <p class="section-label">Premios</p>
+        <h3 class="section-heading">Exhibición de Premios en Monte Plata</h3>
+      </div>
+
+      <!-- Exhibition Multi-Column Grid (2 columns on PC/Tablet) -->
+      <div class="exhibition-grid">
+
+        <!-- Card 1: Foto Oficial en Monte Plata -->
+        <article class="exhibition-card">
+          <div class="card-header-badge">
+            <span class="badge-title">Fotografía Oficial</span>
+            <span class="badge-loc">Monte Plata</span>
+          </div>
+          <div class="exhibition-media-wrap photo-wrap">
+            <img src="assets/images/exhibicion_monte_plata.jpg" alt="Honda CR-V 2022 y Supermoto Husqvarna en Monte Plata" loading="lazy">
+          </div>
+          <div class="card-caption">
+            <h4 class="card-title">Honda CR-V 2022 y Husqvarna 701</h4>
+          </div>
+        </article>
+
+        <!-- Card 2: Video de Presentación de los Vehículos -->
+        <article class="exhibition-card">
+          <div class="card-header-badge">
+            <span class="badge-title">Video de los Vehículos</span>
+            <span class="badge-duration">0:57 min</span>
+          </div>
+          <div class="exhibition-media-wrap video-wrap landscape-video">
+            <video controls preload="metadata" poster="assets/images/exhibicion_monte_plata.jpg" playsinline>
+              <source src="assets/videos/video_presentacion_oficial.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de video.
+            </video>
+          </div>
+          <div class="card-caption">
+            <h4 class="card-title">Presentación de los Vehículos</h4>
+          </div>
+        </article>
+
+        <!-- Card 3: Video Husqvarna 701 Supermoto -->
+        <article class="exhibition-card">
+          <div class="card-header-badge">
+            <span class="badge-title">Husqvarna 701 Supermoto</span>
+            <span class="badge-duration">0:24 min</span>
+          </div>
+          <div class="exhibition-media-wrap video-wrap vertical-video">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/videos/video_husqvarna_supermoto.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de video.
+            </video>
+          </div>
+          <div class="card-caption">
+            <h4 class="card-title">Supermoto Husqvarna 701</h4>
+          </div>
+        </article>
+
+        <!-- Card 4: Video Talonarios de Boletos -->
+        <article class="exhibition-card">
+          <div class="card-header-badge">
+            <span class="badge-title">Talonarios Oficiales</span>
+            <span class="badge-duration">0:14 min</span>
+          </div>
+          <div class="exhibition-media-wrap video-wrap vertical-video">
+            <video controls preload="metadata" playsinline>
+              <source src="assets/videos/video_talonarios_oficiales.mp4" type="video/mp4">
+              Tu navegador no soporta reproducción de video.
+            </video>
+          </div>
+          <div class="card-caption">
+            <h4 class="card-title">Talonarios de Boletos Físicos</h4>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Section Ornamental Divider -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- ========================================== -->
     <!-- SECTION 2: TICKET SELECTION & CHECKOUT     -->
     <!-- ========================================== -->
     <section class="ticket-purchase-card" id="comprar">
-      <h3 class="card-heading">Compra de Boletos en Línea</h3>
-      <p class="card-subtitle">Seleccione la cantidad de boletos a adquirir</p>
+      <h3 class="card-heading">Comprar Boletos</h3>
+      <p class="card-subtitle">Seleccione la cantidad de boletos que desea adquirir</p>
 
       <!-- Preset Quantity Packs -->
       <div class="packs-grid">
@@ -342,51 +431,42 @@
         </div>
       </div>
 
-      <!-- Assigned Numbers Widget -->
-      <div class="lucky-numbers-wrap">
-        <div class="lucky-numbers-header">
-          <span class="lucky-title">Boletos asignados a su orden:</span>
-        </div>
-        <div class="ticket-pills-list" id="tickets-list-container">
-          <!-- Dynamic Tickets will render here -->
-        </div>
-      </div>
-
       <!-- Order Summary Box -->
       <div class="order-summary-box">
-        <div>
-          <div class="summary-details-label"><span id="summary-qty">3</span> Boletos Oficiales</div>
-          <p style="font-size: 0.84rem; color: #6e6157; margin-top: 3px;">Tarifa preventa RD$300 (Ahorro de RD$200 por
-            unidad frente al día final).</p>
+        <div class="order-summary-header">
+          <div class="summary-details-label"><span id="summary-qty">3</span> Boletos</div>
+          <div class="summary-total-price" id="summary-total">RD$ 900</div>
         </div>
-        <div class="summary-total-price" id="summary-total">RD$ 900</div>
+        <div class="summary-reminder-badge">
+          <svg class="summary-reminder-icon" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+          </svg>
+          <span>Tarifa de preventa: <strong>RD$300</strong> por boleto. Le recordamos que el día final del sorteo (20 de Diciembre) el boleto costará <strong>RD$500</strong>.</span>
+        </div>
       </div>
 
-      <!-- Trust Badges of Direct Online Payment Methods -->
+      <!-- Trust Badges of Direct Transfer & WhatsApp Payment Methods -->
       <div class="payment-trust-badges">
         <div class="trust-badge-item">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+            <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
           </svg>
-          <span>Tarjetas (AZUL / CardNet)</span>
+          <span>Pago seguro por Transferencia Bancaria</span>
         </div>
         <div class="trust-badge-item">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.799-3.123 5.707-6.852 5.707H11.23l-.934 5.922h-3.41L9.67 6.195h5.36c2.81 0 4.545 1.05 5.037 2.283z" />
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
-          <span>PayPal Internacional</span>
+          <span>Entrega de boletos por WhatsApp (849-243-7510)</span>
         </div>
       </div>
 
-      <!-- Primary Online Checkout Button (Refined Sage Olive Tone) -->
+      <!-- Primary Action Button: Comprar Boletos Ahora -->
       <button type="button" class="btn-online-checkout" id="btn-open-checkout">
         <svg class="svg-icon" viewBox="0 0 24 24">
-          <path
-            d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+          <path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
         </svg>
-        <span>Pagar Boletos en Línea</span>
+        <span>Comprar Boletos Ahora</span>
       </button>
 
       <p class="guarantee-note">
@@ -431,15 +511,13 @@
 
         <div class="faq-item">
           <button class="faq-question">
-            <span>¿Qué métodos de pago en línea están disponibles?</span>
+            <span>¿Cuáles son los métodos de pago disponibles?</span>
             <svg class="faq-icon-svg" viewBox="0 0 24 24">
               <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
             </svg>
           </button>
           <div class="faq-answer">
-            Puede abonar con tarjeta de crédito/débito (Visa, Mastercard, American Express), mediante Google Pay con un
-            solo toque desde su dispositivo, o a través de PayPal con confirmación inmediata y emisión instantánea de
-            sus números de boletos oficiales.
+            El pago se realiza únicamente mediante <strong>transferencia bancaria</strong> a cualquiera de nuestras cuentas oficiales (Banreservas, Banco Popular o Banco BHD) y confirmando directamente vía <strong>WhatsApp al 849-243-7510</strong> con su comprobante de pago. Al recibirlo, sus números de boletos quedarán formalmente registrados en los talonarios oficiales de la rifa.
           </div>
         </div>
 
@@ -496,32 +574,30 @@
     </div>
     <button type="button" class="sticky-btn" id="sticky-checkout-btn">
       <svg class="svg-icon" viewBox="0 0 24 24">
-        <path
-          d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+        <path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
       </svg>
-      <span>Pagar Boletos</span>
+      <span>Comprar Boletos</span>
     </button>
   </aside>
 
   <!-- ====================================================== -->
-  <!-- CHECKOUT MODAL: PASARELA DE PAGO EN LÍNEA              -->
+  <!-- CHECKOUT MODAL: TRANSFERENCIA BANCARIA Y WHATSAPP      -->
   <!-- ====================================================== -->
   <div class="checkout-modal-overlay" id="modal-checkout" role="dialog" aria-modal="true"
     aria-labelledby="checkout-modal-heading">
     <div class="checkout-modal-card">
       <button class="checkout-modal-close" id="checkout-modal-close-btn"
-        aria-label="Cerrar pasarela de pago">&times;</button>
+        aria-label="Cerrar modal">&times;</button>
 
       <!-- Checkout Header -->
       <div class="checkout-header">
         <h3 class="checkout-header-title" id="checkout-modal-heading">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+            <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
           </svg>
-          Pasarela de Pago Segura
+          Comprar Boletos por Transferencia
         </h3>
-        <p class="checkout-header-desc">Registro oficial de boletos para residentes en República Dominicana.</p>
+        <p class="checkout-header-desc">Transfiera a cualquiera de nuestras cuentas oficiales y solicite sus boletos vía WhatsApp.</p>
       </div>
 
       <!-- Step Navigation Tabs -->
@@ -532,11 +608,11 @@
         </div>
         <div class="checkout-step-tab" data-step="2">
           <span class="step-num-pill">2</span>
-          <span>Método de Pago</span>
+          <span>Cuentas & WhatsApp</span>
         </div>
       </div>
 
-      <!-- STEP 1 CONTAINER: CUSTOMER INFORMATION (ONLY EXACT 4 FIELDS) -->
+      <!-- STEP 1 CONTAINER: CUSTOMER INFORMATION -->
       <div id="checkout-step-1" class="checkout-step-content">
         <div class="checkout-form-grid">
           <div class="form-group full-width">
@@ -561,158 +637,134 @@
         <div
           style="background:#ede3d2; padding:12px 16px; border-radius:var(--radius-sm); margin-bottom:18px; display:flex; justify-content:space-between; align-items:center;">
           <span style="font-weight:700; font-size:0.9rem; color:#4a3c31;"><span id="modal-summary-qty">3</span> Boletos
-            a Pagar:</span>
+            a Comprar:</span>
           <span style="font-family:var(--font-main); font-size:1.35rem; font-weight:900; color:#221a15;"
             id="modal-summary-total">RD$ 900</span>
         </div>
 
         <button type="button" class="btn-online-checkout" id="btn-proceed-to-payment">
-          <span>Continuar al Pago &rarr;</span>
+          <span>Continuar a Cuentas Bancarias &rarr;</span>
         </button>
       </div>
 
-      <!-- STEP 2 CONTAINER: PAYMENT METHOD -->
+      <!-- STEP 2 CONTAINER: TRANSFERENCIA BANCARIA & WHATSAPP -->
       <div id="checkout-step-2" class="checkout-step-content" style="display:none;">
 
-        <p style="font-size:0.88rem; font-weight:700; color:#4e3f34; text-transform:uppercase; margin-bottom:12px;">
-          Seleccione su método de pago digital:</p>
+        <!-- Resumen de Monto a Transferir -->
+        <div class="transfer-summary-box">
+          <div class="transfer-summary-info">
+            <span class="transfer-summary-label">Monto Exacto a Transferir:</span>
+            <div class="transfer-summary-amount" id="transfer-total-amount">RD$ 900</div>
+          </div>
+          <div class="transfer-summary-badge">
+            <span id="transfer-qty-summary">3</span> Boletos
+          </div>
+        </div>
 
-        <!-- Payment Method Selector Tabs -->
-        <div class="payment-options-grid">
-
-          <!-- Method 1: Tarjeta Bancaria (AZUL / CardNet) -->
-          <div class="payment-method-card active" data-method="card">
+        <!-- Instrucción de Transferencia -->
+        <div class="transfer-instructions-card">
+          <h4 class="transfer-card-title">
             <svg class="svg-icon" viewBox="0 0 24 24">
-              <path
-                d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+              <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
             </svg>
-            <span class="payment-method-name">Tarjeta Bancaria</span>
-            <span class="payment-method-sub">AZUL / CardNet (Visa, MC)</span>
-          </div>
+            Cuentas Bancarias Oficiales (República Dominicana)
+          </h4>
+          <p class="transfer-card-sub">Transfiera a cualquiera de las siguientes cuentas autorizadas por la administración dtc & co:</p>
 
-          <!-- Method 2: PayPal -->
-          <div class="payment-method-card" data-method="paypal">
-            <svg class="svg-icon" viewBox="0 0 24 24">
-              <path
-                d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.799-3.123 5.707-6.852 5.707H11.23l-.934 5.922h-3.41L9.67 6.195h5.36c2.81 0 4.545 1.05 5.037 2.283z" />
-            </svg>
-            <span class="payment-method-name">PayPal</span>
-            <span class="payment-method-sub">Cuenta / Exterior</span>
-          </div>
-
-        </div>
-
-        <!-- PANE 1: TARJETA BANCARIA (PASARELA OFICIAL AZUL / CARDNET) -->
-        <div id="pane-card" class="payment-pane active">
-          <div class="banking-gateway-box">
+          <!-- Lista de Cuentas Bancarias -->
+          <div class="bank-accounts-list">
             
-            <!-- Logos Oficiales de Pasarelas y Tarjetas (Sin etiquetas informales ni emojis) -->
-            <div class="banking-logos-row">
-              <div class="corporate-brand-logo logo-box-azul" title="AZUL - Servicios Digitales Popular">
-                <span class="brand-name-azul">AZUL</span>
-                <span class="brand-sub-azul">Banco Popular</span>
+            <!-- Banreservas -->
+            <div class="bank-account-item">
+              <div class="bank-item-top">
+                <span class="bank-pill pill-banreservas">Banreservas</span>
+                <span class="bank-account-type">Cuenta de Ahorros DOP</span>
               </div>
-              <div class="corporate-brand-logo logo-box-cardnet" title="CardNet Dominicana">
-                <span class="brand-name-cardnet">CardNet</span>
+              <div class="bank-number-row">
+                <span class="bank-acc-num" id="acc-num-banreservas">960-345892-1</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-banreservas" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span>Copiar</span>
+                </button>
               </div>
-              <div class="card-network-logo" title="Visa">
-                <svg viewBox="0 0 48 32" height="22">
-                  <rect width="48" height="32" rx="4" fill="#ffffff" stroke="#ded4c4"/>
-                  <path d="M19.5 21.5l2.2-11h2.7l-2.2 11h-2.7zm11.3-10.7c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.4 0 1.5 1.4 2.3 2.4 2.8 1.1.5 1.5.9 1.5 1.3 0 .7-.9 1-1.7 1-.1 0-.3 0-.4 0-1.2 0-2.1-.3-2.7-.6l-.4-.2-.4 2.3c.7.3 1.9.6 3.2.6 2.9 0 4.8-1.4 4.8-3.6 0-1.2-.7-2.1-2.3-2.9-1-.5-1.6-.8-1.6-1.3 0-.5.5-.9 1.6-.9 1 0 1.7.2 2.2.4l.3.1.5-2.2zm7.2 0h-2.1c-.6 0-1.1.2-1.4.9l-3.9 9.8h2.8l.6-1.5h3.4l.3 1.5h2.5l-2.2-10.7zm-3.3 7.2l1.4-3.8.8 3.8h-2.2zm-18-7.2l-2.6 7.5-.3-1.4c-.5-1.7-2-3.6-3.8-4.5l2.4 9.1h2.8l4.3-10.7h-2.8z" fill="#1a1f71"/>
-                </svg>
-              </div>
-              <div class="card-network-logo" title="Mastercard">
-                <svg viewBox="0 0 48 32" height="22">
-                  <rect width="48" height="32" rx="4" fill="#ffffff" stroke="#ded4c4"/>
-                  <circle cx="19" cy="16" r="8" fill="#EB001B"/>
-                  <circle cx="29" cy="16" r="8" fill="#F79E1B" fill-opacity="0.85"/>
-                </svg>
+              <div class="bank-beneficiary-info">
+                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
               </div>
             </div>
 
-            <!-- Resumen de Transacción -->
-            <div class="banking-summary-row">
-              <div>
-                <span class="banking-summary-label">Concepto a Pagar:</span>
-                <div style="font-weight:800; font-size:0.95rem; color:#221a15; margin-top:2px;">
-                  <span id="card-qty-summary">3</span> Boletos Oficiales Rifa 2026
-                </div>
+            <!-- Banco Popular -->
+            <div class="bank-account-item">
+              <div class="bank-item-top">
+                <span class="bank-pill pill-popular">Banco Popular</span>
+                <span class="bank-account-type">Cuenta Corriente DOP</span>
               </div>
-              <div style="text-align:right;">
-                <span class="banking-summary-label">Total a Pagar:</span>
-                <div class="banking-summary-total" id="btn-card-amount">RD$ 900</div>
+              <div class="bank-number-row">
+                <span class="bank-acc-num" id="acc-num-popular">821-490215-6</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-popular" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span>Copiar</span>
+                </button>
               </div>
-            </div>
-
-            <!-- Mensaje Institucional Directo -->
-            <p class="banking-security-text">
-              La transacción será procesada a través de la pasarela bancaria oficial (AZUL / CardNet). Se aplicará autenticación 3D Secure con su banco emisor. Sus datos financieros viajan cifrados y no se almacenan en este sitio.
-            </p>
-
-            <button type="button" class="btn-banking-pay" id="btn-pay-card">
-              <svg style="width:19px; height:19px; fill:#ffffff;" viewBox="0 0 24 24">
-                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-              </svg>
-              <span>Continuar al Pago Seguro con Tarjeta</span>
-            </button>
-
-            <div class="banking-trust-footer">
-              <svg class="trust-lock-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-              <span>Cifrado SSL de 256 bits &bull; Autenticación bancaria 3D Secure</span>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- PANE 2: PAYPAL -->
-        <div id="pane-paypal" class="payment-pane">
-          <div class="paypal-gateway-box">
-            
-            <!-- Logo Oficial de PayPal -->
-            <div class="paypal-brand-header">
-              <svg viewBox="0 0 110 26" height="26">
-                <path fill="#003087" d="M10.8 2.2H3.7c-.5 0-.9.4-1 .9L.1 21.6c0 .3.2.6.5.6h3.4c.5 0 .9-.4 1-.9l.7-4.6c.1-.5.5-.9 1-.9h2.3c4.7 0 7.4-2.3 8.1-6.8.3-2-.1-3.5-1.1-4.6-1.2-1.3-3.1-2.2-5.2-2.2z"/>
-                <path fill="#0079C1" d="M36.3 8.9h-3.4c-.4 0-.8.3-.9.7l-.1.8c-.8-1-2.2-1.7-3.9-1.7-3.7 0-6.8 2.8-7.4 6.6-.3 2 .2 3.8 1.4 5.1 1.1 1.2 2.7 1.8 4.6 1.8 3.2 0 4.9-2 4.9-2l-.2 1.1c0 .4.3.7.7.7h3.1c.4 0 .8-.3.9-.7l2.2-13.8c0-.4-.4-.8-.8-.8zm-4.7 6.6c-.3 1.9-1.9 3.2-3.8 3.2-1 0-1.8-.3-2.4-.9-.6-.6-.8-1.4-.6-2.4.3-1.9 1.9-3.2 3.8-3.2 1 0 1.8.3 2.4.9.6.6.9 1.4.6 2.4z"/>
-                <path fill="#00457C" d="M12.9 8.2c-.3 2-.9 3.4-1.9 4.4-1.2 1.3-3 2-5.2 2H3.5L2 23.8h4.6c.5 0 .9-.4 1-.9l.8-4.8c.1-.5.5-.9 1-.9h1.7c4.2 0 6.6-2.1 7.2-6.1.3-1.7-.1-3-1-3.9-.7-.8-1.8-1.3-2.9-1.5-.4.8-.8 1.6-1.5 2.5z"/>
-                <path fill="#0079C1" d="M51.9 8.9h-3.4c-.4 0-.7.2-.9.6l-4.7 6.8-2-6.6c-.1-.4-.5-.8-.9-.8h-3.4c-.5 0-.8.5-.6.9l4.1 12.1-3.4 4.8c-.3.4 0 1 .5 1h3.4c.4 0 .7-.2.9-.6l10.8-17.3c.3-.4 0-.9-.4-.9z"/>
-                <path fill="#003087" d="M68.8 2.2h-7.1c-.5 0-.9.4-1 .9L58.1 21.6c0 .3.2.6.5.6h3.6c.4 0 .7-.3.8-.7l.8-5c.1-.4.4-.7.8-.7h2.3c4.7 0 7.4-2.3 8.1-6.8.3-2-.1-3.5-1.1-4.6-1.2-1.3-3-2.2-5.2-2.2zm.4 6.7c-.4 2.8-2.6 2.8-4.7 2.8h-1.5l.9-5.6h1.5c1.4 0 2.5 0 3.2.7.5.5.7 1.2.6 2.1z"/>
-                <path fill="#0079C1" d="M85.7 8.9h-3.4c-.4 0-.8.3-.9.7l-.1.8c-.8-1-2.2-1.7-3.9-1.7-3.7 0-6.8 2.8-7.4 6.6-.3 2 .2 3.8 1.4 5.1 1.1 1.2 2.7 1.8 4.6 1.8 3.2 0 4.9-2 4.9-2l-.2 1.1c0 .4.3.7.7.7h3.1c.4 0 .8-.3.9-.7l2.2-13.8c0-.4-.4-.8-.8-.8zm-4.7 6.6c-.3 1.9-1.9 3.2-3.8 3.2-1 0-1.8-.3-2.4-.9-.6-.6-.8-1.4-.6-2.4.3-1.9 1.9-3.2 3.8-3.2 1 0 1.8.3 2.4.9.6.6.9 1.4.6 2.4z"/>
-                <path fill="#003087" d="M93.3 2.2l-3.1 19.4c0 .4.3.7.7.7h3.1c.4 0 .8-.3.9-.7l3.1-19.4h-4.7z"/>
-              </svg>
-            </div>
-
-            <!-- Resumen de Transacción -->
-            <div class="banking-summary-row">
-              <div>
-                <span class="banking-summary-label">Concepto a Pagar:</span>
-                <div style="font-weight:800; font-size:0.95rem; color:#221a15; margin-top:2px;">
-                  <span id="paypal-qty-summary">3</span> Boletos Oficiales Rifa 2026
-                </div>
-              </div>
-              <div style="text-align:right;">
-                <span class="banking-summary-label">Total a Pagar:</span>
-                <div class="banking-summary-total" id="btn-paypal-amount">RD$ 900</div>
+              <div class="bank-beneficiary-info">
+                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
               </div>
             </div>
 
-            <p class="banking-security-text">
-              El pago se procesará a través de la plataforma de PayPal. Podrá completar su transacción con saldo de su cuenta PayPal o con tarjetas de crédito internacionales.
-            </p>
-
-            <button type="button" class="btn-paypal" id="btn-pay-paypal">
-              <svg class="svg-icon" viewBox="0 0 24 24">
-                <path d="M20.067 8.478c.492.88.556 2.014.3 3.327-.74 3.799-3.123 5.707-6.852 5.707H11.23l-.934 5.922h-3.41L9.67 6.195h5.36c2.81 0 4.545 1.05 5.037 2.283z" />
-              </svg>
-              <span>Pagar con PayPal</span>
-            </button>
-
-            <div class="banking-trust-footer">
-              <svg class="trust-lock-icon" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
-              <span>Transacción cifrada y protegida por PayPal</span>
+            <!-- Banco BHD -->
+            <div class="bank-account-item">
+              <div class="bank-item-top">
+                <span class="bank-pill pill-bhd">Banco BHD</span>
+                <span class="bank-account-type">Cuenta de Ahorros DOP</span>
+              </div>
+              <div class="bank-number-row">
+                <span class="bank-acc-num" id="acc-num-bhd">305-891240-5</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-bhd" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                  <span>Copiar</span>
+                </button>
+              </div>
+              <div class="bank-beneficiary-info">
+                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
+              </div>
             </div>
 
           </div>
+
+          <!-- Pasos de Confirmación -->
+          <div class="transfer-steps-guide">
+            <div class="step-guide-item">
+              <span class="step-dot">1</span>
+              <span>Realice la transferencia bancaria por <strong><span id="guide-total-amount">RD$ 900</span></strong>.</span>
+            </div>
+            <div class="step-guide-item">
+              <span class="step-dot">2</span>
+              <span>Guarde una captura de pantalla o foto de su comprobante de pago.</span>
+            </div>
+            <div class="step-guide-item">
+              <span class="step-dot">3</span>
+              <span>Presione el botón a continuación para enviar su comprobante por WhatsApp (<strong>849-243-7510</strong>) y recibir sus boletos oficiales.</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Botón Principal: WhatsApp -->
+        <button type="button" class="btn-whatsapp-confirm" id="btn-confirm-whatsapp">
+          <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+          </svg>
+          <div class="whatsapp-btn-text">
+            <span class="btn-primary-line">Solicitar Boletos por WhatsApp</span>
+            <span class="btn-sub-line">Enviar comprobante a dtc & co (849-243-7510)</span>
+          </div>
+        </button>
+
+        <!-- Botón Secundario: Ver Comprobante Digital -->
+        <button type="button" class="btn-view-digital-receipt" id="btn-view-receipt">
+          <svg class="svg-icon" viewBox="0 0 24 24">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+          <span>Ver Comprobante de Compra</span>
+        </button>
 
         <button type="button" id="btn-back-to-step1"
           style="background:transparent; border:none; color:#6a5e55; font-size:0.86rem; font-weight:700; cursor:pointer; margin-top:14px; text-decoration:underline;">
@@ -727,15 +779,14 @@
             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
           </svg>
         </div>
-        <h4 class="confirm-title">¡Boleto Emitido y Registrado!</h4>
-        <p class="confirm-subtitle">Su participación ha quedado asentada en el talón oficial de la Rifa Navideña 2026.
-        </p>
+        <h4 class="confirm-title">¡Solicitud de Boletos Registrada!</h4>
+        <p class="confirm-subtitle">Envíe su comprobante de transferencia bancaria por WhatsApp para recibir los números oficiales de sus boletos en el talonario de dtc & co.</p>
 
-        <!-- Official Digital Receipt (Exact 4 Fields + Folios) -->
+        <!-- Official Digital Receipt (Real Data) -->
         <div class="digital-receipt-box">
           <div class="receipt-row">
-            <span class="receipt-label">Comprobante No:</span>
-            <span class="receipt-value" id="receipt-order-id">#DTC-2026-8492</span>
+            <span class="receipt-label">Cantidad:</span>
+            <span class="receipt-value" id="receipt-qty-count">3 Boletos</span>
           </div>
           <div class="receipt-row">
             <span class="receipt-label">Nombre:</span>
@@ -754,36 +805,28 @@
             <span class="receipt-value" id="receipt-buyer-address">-</span>
           </div>
           <div class="receipt-row">
-            <span class="receipt-label">Total Pagado:</span>
+            <span class="receipt-label">Total a Transferir:</span>
             <span class="receipt-value" id="receipt-total-amount">RD$ 900</span>
           </div>
-          <div style="margin-top:14px;">
-            <span class="receipt-label" style="display:block; margin-bottom:6px;">Números de Boletos Asignados:</span>
-            <div class="receipt-folios-grid" id="receipt-folios-container">
-              <!-- Registered tickets here -->
-            </div>
+          <div style="margin-top:14px; background:#faf5ed; border:1px dashed #d5c8b5; padding:12px; border-radius:6px; font-size:0.83rem; color:#5c4e43; text-align:left;">
+            <strong style="display:block; color:#3e5033; margin-bottom:4px;">Asignación de Boletos:</strong>
+            Sus números oficiales de boletos le serán entregados directamente por WhatsApp al validar su comprobante de transferencia bancaria.
           </div>
         </div>
 
-        <button type="button" class="btn-online-checkout" id="btn-download-ticket" style="margin-bottom:10px;">
-          <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+        <!-- Botón Directo WhatsApp en Comprobante -->
+        <a href="#" target="_blank" rel="noopener" class="btn-whatsapp-confirm" id="btn-receipt-whatsapp" style="margin-bottom:12px; text-decoration:none;">
+          <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
           </svg>
-          <span>Descargar Boleto</span>
-        </button>
-
-        <button type="button" class="btn-online-checkout" id="btn-print-receipt"
-          style="background:transparent; border:1.5px solid #758a69; color:#404e38; margin-bottom:10px;">
-          <svg class="svg-icon" viewBox="0 0 24 24" style="fill:#404e38;">
-            <path
-              d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" />
-          </svg>
-          <span>Imprimir Comprobante</span>
-        </button>
+          <div class="whatsapp-btn-text">
+            <span class="btn-primary-line">Enviar Datos por WhatsApp</span>
+            <span class="btn-sub-line">(849-243-7510 • Adjunte su comprobante bancario para recibir sus boletos)</span>
+          </div>
+        </a>
 
         <button type="button" class="btn-online-checkout" id="btn-finish-checkout" style="background:#5a493d;">
-          <span>Cerrar y Volver al Inicio</span>
+          <span>Cerrar Ventana</span>
         </button>
       </div>
 

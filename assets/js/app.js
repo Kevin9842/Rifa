@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const packButtons = document.querySelectorAll('.pack-button');
   const summaryQty = document.getElementById('summary-qty');
   const summaryTotal = document.getElementById('summary-total');
-  const ticketsListContainer = document.getElementById('tickets-list-container');
   const stickyPriceDisplay = document.getElementById('sticky-price-display');
 
   // Elementos DOM - Checkout Modal
@@ -45,39 +44,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalSummaryQty = document.getElementById('modal-summary-qty');
   const modalSummaryTotal = document.getElementById('modal-summary-total');
   
-  // Montos en Botones de Pago
-  const btnCardAmount = document.getElementById('btn-card-amount');
-  const cardQtySummary = document.getElementById('card-qty-summary');
-  const paypalQtySummary = document.getElementById('paypal-qty-summary');
-  const btnPaypalAmount = document.getElementById('btn-paypal-amount');
+  // Elementos de Transferencia y WhatsApp
+  const transferTotalAmount = document.getElementById('transfer-total-amount');
+  const transferQtySummary = document.getElementById('transfer-qty-summary');
+  const guideTotalAmount = document.getElementById('guide-total-amount');
+  const btnConfirmWhatsapp = document.getElementById('btn-confirm-whatsapp');
+  const btnViewReceipt = document.getElementById('btn-view-receipt');
+  const btnReceiptWhatsapp = document.getElementById('btn-receipt-whatsapp');
+  const copyAccButtons = document.querySelectorAll('.btn-copy-acc');
 
-  // Pestañas de Pago (2 Métodos: Tarjeta Bancaria y PayPal)
-  const paymentMethodCards = document.querySelectorAll('.payment-method-card');
-  const paymentPanes = {
-    card: document.getElementById('pane-card'),
-    paypal: document.getElementById('pane-paypal')
-  };
-
-  // Botones de Confirmación de Pago
-  const btnPayCard = document.getElementById('btn-pay-card');
-  const btnPayPaypal = document.getElementById('btn-pay-paypal');
+  // Botones de Finalización
   const btnFinishCheckout = document.getElementById('btn-finish-checkout');
-  const btnPrintReceipt = document.getElementById('btn-print-receipt');
-  const btnDownloadTicket = document.getElementById('btn-download-ticket');
   const linkAdvisorHelp = document.getElementById('link-advisor-help');
 
-  // Recibo Digital
-  const receiptOrderId = document.getElementById('receipt-order-id');
+  // Resumen de Solicitud
+  const receiptQtyCount = document.getElementById('receipt-qty-count');
   const receiptBuyerName = document.getElementById('receipt-buyer-name');
   const receiptBuyerId = document.getElementById('receipt-buyer-id');
   const receiptBuyerPhone = document.getElementById('receipt-buyer-phone');
   const receiptBuyerAddress = document.getElementById('receipt-buyer-address');
   const receiptTotalAmount = document.getElementById('receipt-total-amount');
-  const receiptFoliosContainer = document.getElementById('receipt-folios-container');
 
   // Estado
   let currentQty = 3;
-  let luckyNumbers = [];
   let currentBuyer = {
     name: '',
     id: '',
@@ -112,32 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
   updateCountdown();
 
-  // 2. Generador de Folios Oficiales
-  function generateLuckyNumbers(count) {
-    const list = [];
-    const used = new Set();
-    while (list.length < count) {
-      const num = Math.floor(1000 + Math.random() * 9000);
-      if (!used.has(num)) {
-        used.add(num);
-        list.push(num);
-      }
-    }
-    return list;
-  }
-
-  function renderLuckyNumbers() {
-    if (!ticketsListContainer) return;
-    ticketsListContainer.innerHTML = '';
-    luckyNumbers.forEach((num) => {
-      const pill = document.createElement('div');
-      pill.className = 'ticket-pill';
-      pill.innerHTML = `<span class="pill-dot"></span> Boleto #${num}`;
-      ticketsListContainer.appendChild(pill);
-    });
-  }
-
-  // 3. Actualización de Pedido y Montos
+  // 2. Actualización de Pedido y Montos
   function updateOrder(qty) {
     currentQty = Math.max(1, Math.min(100, parseInt(qty) || 1));
     if (stepperInput) stepperInput.value = currentQty;
@@ -151,10 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalSummaryQty) modalSummaryQty.innerText = currentQty;
     if (modalSummaryTotal) modalSummaryTotal.innerText = `RD$ ${formattedTotal}`;
     
-    if (btnCardAmount) btnCardAmount.innerText = `RD$ ${formattedTotal}`;
-    if (cardQtySummary) cardQtySummary.innerText = currentQty;
-    if (paypalQtySummary) paypalQtySummary.innerText = currentQty;
-    if (btnPaypalAmount) btnPaypalAmount.innerText = `RD$ ${formattedTotal}`;
+    // Transferencia Bancaria
+    if (transferTotalAmount) transferTotalAmount.innerText = `RD$ ${formattedTotal}`;
+    if (transferQtySummary) transferQtySummary.innerText = currentQty;
+    if (guideTotalAmount) guideTotalAmount.innerText = `RD$ ${formattedTotal}`;
 
     // Sincronizar botones de paquetes
     packButtons.forEach(btn => {
@@ -166,13 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Actualizar folios asignados
-    luckyNumbers = generateLuckyNumbers(currentQty);
-    renderLuckyNumbers();
-
     // Actualizar enlace de soporte
     if (linkAdvisorHelp) {
-      const helpMsg = `Saludos a dtc & co. Deseo realizar una consulta para la compra en línea de ${currentQty} boletos para la Rifa Navideña 2026.`;
+      const helpMsg = `Saludos a dtc & co. Deseo realizar una consulta para comprar ${currentQty} boletos para la Rifa Navideña 2026.`;
       linkAdvisorHelp.setAttribute('href', `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(helpMsg)}`);
       linkAdvisorHelp.setAttribute('target', '_blank');
       linkAdvisorHelp.setAttribute('rel', 'noopener');
@@ -262,26 +222,32 @@ document.addEventListener('DOMContentLoaded', () => {
     tabStep1.addEventListener('click', () => showStep(1));
   }
 
+  // Función auxiliar para registrar información del comprador
+  function saveBuyerInfo() {
+    const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
+    const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
+    const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
+    const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
+    currentBuyer = { name, id, phone, address };
+  }
+
+  // Navegación directa entre pestañas 1 y 2
+  if (tabStep1) {
+    tabStep1.style.cursor = 'pointer';
+    tabStep1.addEventListener('click', () => showStep(1));
+  }
+
   if (tabStep2) {
     tabStep2.style.cursor = 'pointer';
     tabStep2.addEventListener('click', () => {
-      const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
-      const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
-      const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
-      const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
-      currentBuyer = { name, id, phone, address };
+      saveBuyerInfo();
       showStep(2);
     });
   }
 
   if (btnProceedToPayment) {
     btnProceedToPayment.addEventListener('click', () => {
-      const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
-      const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
-      const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
-      const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
-
-      currentBuyer = { name, id, phone, address };
+      saveBuyerInfo();
       showStep(2);
     });
   }
@@ -290,187 +256,93 @@ document.addEventListener('DOMContentLoaded', () => {
     btnBackToStep1.addEventListener('click', () => showStep(1));
   }
 
-  // 6. Selección de Métodos de Pago (Pestañas)
-  paymentMethodCards.forEach(card => {
-    card.addEventListener('click', () => {
-      const method = card.getAttribute('data-method');
-      paymentMethodCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-
-      Object.keys(paymentPanes).forEach(key => {
-        if (paymentPanes[key]) {
-          paymentPanes[key].classList.toggle('active', key === method);
+  // 6. Copiar Cuentas Bancarias con retroalimentación visual
+  if (copyAccButtons) {
+    copyAccButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          const accountText = targetEl.innerText.trim();
+          navigator.clipboard.writeText(accountText).then(() => {
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span>¡Copiado!</span>';
+            btn.classList.add('copied');
+            setTimeout(() => {
+              btn.innerHTML = originalContent;
+              btn.classList.remove('copied');
+            }, 1800);
+          }).catch(() => {
+            // Fallback si clipboard API no está disponible
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span>Copiado</span>';
+            setTimeout(() => {
+              btn.innerHTML = originalContent;
+            }, 1800);
+          });
         }
       });
     });
-  });
-
-  // Formato visual para campos de tarjeta
-  const cardNumberInput = document.getElementById('card-number');
-  if (cardNumberInput) {
-    cardNumberInput.addEventListener('input', (e) => {
-      let val = e.target.value.replace(/\D/g, '').substring(0, 16);
-      val = val.match(/.{1,4}/g)?.join(' ') || val;
-      e.target.value = val;
-    });
   }
 
-  const cardExpiryInput = document.getElementById('card-expiry');
-  if (cardExpiryInput) {
-    cardExpiryInput.addEventListener('input', (e) => {
-      let val = e.target.value.replace(/\D/g, '').substring(0, 4);
-      if (val.length >= 3) {
-        val = val.substring(0, 2) + '/' + val.substring(2);
-      }
-      e.target.value = val;
-    });
-  }
-
-  // 7. Finalización y Emisión del Comprobante
-  function completePayment(methodName) {
+  // Generador de Mensaje Oficial para WhatsApp
+  function buildWhatsAppOrderMessage() {
+    saveBuyerInfo();
     const total = (currentQty * TICKET_PRICE).toLocaleString('es-DO');
-    const randomOrderId = 'DTC-2026-' + Math.floor(1000 + Math.random() * 9000);
+    const name = currentBuyer.name !== 'Comprador Registrado' ? currentBuyer.name : (inputBuyerName?.value.trim() || 'No especificado');
+    const id = currentBuyer.id !== '001-0000000-0' ? currentBuyer.id : (inputBuyerId?.value.trim() || 'No especificada');
+    const phone = currentBuyer.phone !== '(809) 000-0000' ? currentBuyer.phone : (inputBuyerPhone?.value.trim() || 'No especificado');
+    const address = currentBuyer.address !== 'Monte Plata, RD' ? currentBuyer.address : (inputBuyerAddress?.value.trim() || 'No especificada');
 
-    if (receiptOrderId) receiptOrderId.innerText = `#${randomOrderId}`;
+    return `¡Hola dtc & co! 👋 Deseo comprar mis boletos para la *Rifa Navideña Monte Plata 2026* por transferencia bancaria.
+
+📋 *Detalles de mi Pedido:*
+• *Cantidad:* ${currentQty} ${currentQty === 1 ? 'Boleto' : 'Boletos'}
+• *Total a Transferir:* RD$ ${total}
+
+👤 *Datos del Participante:*
+• *Nombre:* ${name}
+• *Cédula:* ${id}
+• *Teléfono:* ${phone}
+• *Dirección:* ${address}
+
+Adjunto el comprobante de pago de mi transferencia bancaria para que me envíen los números oficiales de mis boletos. ¡Muchas gracias!`;
+  }
+
+  // 7. Finalización y Resumen de Solicitud
+  function completePayment() {
+    const total = (currentQty * TICKET_PRICE).toLocaleString('es-DO');
+
+    if (receiptQtyCount) receiptQtyCount.innerText = `${currentQty} ${currentQty === 1 ? 'Boleto' : 'Boletos'}`;
     if (receiptBuyerName) receiptBuyerName.innerText = currentBuyer.name || 'Titular Registrado';
     if (receiptBuyerId) receiptBuyerId.innerText = currentBuyer.id || 'N/D';
     if (receiptBuyerPhone) receiptBuyerPhone.innerText = currentBuyer.phone || 'N/D';
     if (receiptBuyerAddress) receiptBuyerAddress.innerText = currentBuyer.address || 'N/D';
-    if (receiptTotalAmount) receiptTotalAmount.innerText = `RD$ ${total} (${methodName})`;
+    if (receiptTotalAmount) receiptTotalAmount.innerText = `RD$ ${total}`;
 
-    if (receiptFoliosContainer) {
-      receiptFoliosContainer.innerHTML = '';
-      luckyNumbers.forEach(n => {
-        const tag = document.createElement('span');
-        tag.className = 'receipt-folio-tag';
-        tag.innerText = `Boleto #${n}`;
-        receiptFoliosContainer.appendChild(tag);
-      });
+    if (btnReceiptWhatsapp) {
+      const msg = buildWhatsAppOrderMessage();
+      btnReceiptWhatsapp.href = `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`;
     }
 
     showStep(3);
   }
 
-  // Pago con Tarjeta
-  // Pago con Tarjeta (Pasarela Oficial Bancaria AZUL / CardNet)
-  if (btnPayCard) {
-    btnPayCard.addEventListener('click', () => {
-      const originalHtml = btnPayCard.innerHTML;
-      btnPayCard.innerHTML = `
-        <svg style="width:20px; height:20px; fill:#ffffff; animation:spin 1s linear infinite;" viewBox="0 0 24 24">
-          <path d="M12 4V2C6.48 2 2 6.48 2 12h2c0-4.41 3.59-8 8-8zm0 16c-4.41 0-8-3.59-8-8H2c0 5.52 4.48 10 10 10v-2zm8-8c0-4.41-3.59-8-8-8V2c5.52 0 10 4.48 10 10h-2z"/>
-        </svg>
-        <span>Conectando con la Pasarela Segura AZUL / CardNet...</span>
-      `;
-      btnPayCard.disabled = true;
-      btnPayCard.style.opacity = '0.85';
-
-      setTimeout(() => {
-        btnPayCard.innerHTML = originalHtml;
-        btnPayCard.disabled = false;
-        btnPayCard.style.opacity = '1';
-        completePayment('Tarjeta Bancaria (AZUL / CardNet)');
-      }, 1300);
+  // Botón Principal de WhatsApp en Paso 2
+  if (btnConfirmWhatsapp) {
+    btnConfirmWhatsapp.addEventListener('click', () => {
+      const msg = buildWhatsAppOrderMessage();
+      const whatsappUrl = `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappUrl, '_blank');
+      completePayment();
     });
   }
 
-  // Pago con PayPal (Internacional)
-  if (btnPayPaypal) {
-    btnPayPaypal.addEventListener('click', () => {
-      const originalContent = btnPayPaypal.innerHTML;
-      btnPayPaypal.innerHTML = '<span>Conectando con PayPal Checkout Oficial...</span>';
-      btnPayPaypal.disabled = true;
-      btnPayPaypal.style.opacity = '0.85';
-
-      setTimeout(() => {
-        btnPayPaypal.innerHTML = originalContent;
-        btnPayPaypal.disabled = false;
-        btnPayPaypal.style.opacity = '1';
-        completePayment('PayPal Internacional');
-      }, 1200);
-    });
-  }
-
-  if (btnPrintReceipt) {
-    btnPrintReceipt.addEventListener('click', () => {
-      window.print();
-    });
-  }
-
-  // Descarga del Boleto Oficial Certificado
-  if (btnDownloadTicket) {
-    btnDownloadTicket.addEventListener('click', () => {
-      const orderId = receiptOrderId ? receiptOrderId.innerText : 'DTC-2026';
-      const name = currentBuyer.name || 'Participante Registrado';
-      const id = currentBuyer.id || 'N/D';
-      const phone = currentBuyer.phone || 'N/D';
-      const address = currentBuyer.address || 'N/D';
-      const foliosHtml = luckyNumbers.map(n => `<span style="display:inline-block; background:#637654; color:#ffffff; font-size:18px; font-weight:800; padding:6px 14px; border-radius:6px; margin:4px;">Boleto #${n}</span>`).join(' ');
-
-      const ticketHtml = `<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boleto Oficial - ${orderId} | Rifa Navideña 2026</title>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5efe6; color: #2d180d; padding: 30px 15px; margin: 0; }
-    .ticket-card { max-width: 620px; margin: 0 auto; background: #ffffff; border-radius: 12px; border: 2px solid #b15529; box-shadow: 0 10px 30px rgba(0,0,0,0.1); overflow: hidden; }
-    .header { background: linear-gradient(135deg, #b15529, #7a3212); color: #ffffff; padding: 22px; text-align: center; }
-    .brand { font-size: 24px; font-weight: 900; letter-spacing: 1px; }
-    .brand small { font-size: 14px; opacity: 0.9; margin-left: 2px; }
-    .header h1 { margin: 6px 0 0 0; font-size: 22px; text-transform: uppercase; }
-    .header p { margin: 4px 0 0 0; opacity: 0.9; font-size: 13px; }
-    .body { padding: 24px; }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; background: #faf5ed; padding: 16px; border-radius: 8px; border: 1px solid #e7ded0; }
-    .info-item { font-size: 14px; }
-    .info-item strong { display: block; color: #7a3212; font-size: 11px; text-transform: uppercase; margin-bottom: 2px; }
-    .folios-box { text-align: center; margin: 20px 0; padding: 18px; border: 2px dashed #637654; border-radius: 8px; background: #f2f7ef; }
-    .prizes { font-size: 12px; color: #665c54; border-top: 1px solid #eedecb; padding-top: 14px; text-align: center; line-height: 1.5; }
-    .footer { background: #351b0e; color: #ffffff; text-align: center; padding: 12px; font-size: 12px; }
-    @media print { body { background: #ffffff; padding: 0; } .ticket-card { box-shadow: none; border: 1px solid #000; } }
-  </style>
-</head>
-<body>
-  <div class="ticket-card">
-    <div class="header">
-      <div class="brand">dtc<small>&CO</small></div>
-      <h1>Boleto Oficial de Participación</h1>
-      <p>Rifa Navideña 2026 • 20 de Diciembre • Monte Plata</p>
-    </div>
-    <div class="body">
-      <div class="info-grid">
-        <div class="info-item"><strong>No. Comprobante:</strong> ${orderId}</div>
-        <div class="info-item"><strong>Titular Registrado:</strong> ${name}</div>
-        <div class="info-item"><strong>Cédula:</strong> ${id}</div>
-        <div class="info-item"><strong>Número de Teléfono:</strong> ${phone}</div>
-        <div class="info-item" style="grid-column: span 2;"><strong>Dirección:</strong> ${address}</div>
-      </div>
-      <div class="folios-box">
-        <strong style="display:block; margin-bottom:10px; color:#3e5033; font-size:14px; letter-spacing:0.5px;">BOLETOS ASIGNADOS Y REGISTRADOS OFICIALMENTE</strong>
-        <div>${foliosHtml}</div>
-      </div>
-      <div class="prizes">
-        <strong>Premios a sortear:</strong><br>
-        1.er Lugar: Honda CR-V Touring 2022 | 2.º Lugar: Supermoto Husqvarna 701 (2026) | 3.er Lugar: 10 premios de RD$10,000 en efectivo
-      </div>
-    </div>
-    <div class="footer">
-      Sorteo oficial certificado por la administración de dtc & co en Monte Plata, R.D.
-    </div>
-  </div>
-</body>
-</html>`;
-
-      const blob = new Blob([ticketHtml], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `Boleto-Rifa-2026-${orderId.replace('#', '')}.html`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+  // Botón Secundario para ver resumen digital
+  if (btnViewReceipt) {
+    btnViewReceipt.addEventListener('click', () => {
+      saveBuyerInfo();
+      completePayment();
     });
   }
 
@@ -519,4 +391,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Control de reproducción de videos: pausar otros videos al iniciar uno
+  const galleryVideos = document.querySelectorAll('.exhibition-media-wrap video, .video-frame-wrap video');
+  galleryVideos.forEach(vid => {
+    vid.addEventListener('play', () => {
+      galleryVideos.forEach(otherVid => {
+        if (otherVid !== vid && !otherVid.paused) {
+          otherVid.pause();
+        }
+      });
+    });
+  });
 });
