@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const receiptTotalAmount = document.getElementById('receipt-total-amount');
 
   // Estado
-  let currentQty = 3;
+  let currentQty = 1;
   let currentBuyer = {
     name: '',
     id: '',

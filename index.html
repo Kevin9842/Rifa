@@ -26,7 +26,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=11">
+  <link rel="stylesheet" href="assets/css/style.css?v=13">
 
   <!-- Favicon: Logo DTC & CO en la pestaña del navegador -->
   <link rel="icon" type="image/png" href="assets/images/logo_dtc_sage.png">
@@ -648,7 +648,9 @@
   <div class="checkout-modal-overlay" id="modal-checkout" role="dialog" aria-modal="true"
     aria-labelledby="checkout-modal-heading">
     <div class="checkout-modal-card">
-      <button class="checkout-modal-close" id="checkout-modal-close-btn" aria-label="Cerrar modal">&times;</button>
+      <button class="checkout-modal-close" id="checkout-modal-close-btn" aria-label="Cerrar modal">
+        <svg class="modal-close-x-svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
 
       <!-- Checkout Header -->
       <div class="checkout-header">
@@ -902,9 +904,9 @@
         </a>
 
 
-        <button type="button" id="btn-back-to-step1"
-          style="background:transparent; border:none; color:#6a5e55; font-size:0.86rem; font-weight:700; cursor:pointer; margin-top:14px; text-decoration:underline;">
-          &larr; Volver a modificar datos del boleto
+        <button type="button" class="btn-back-to-step1" id="btn-back-to-step1">
+          <svg class="back-arrow-svg" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+          <span>Volver a modificar datos del boleto</span>
         </button>
       </div>
 
@@ -923,7 +925,7 @@
         <div class="digital-receipt-box">
           <div class="receipt-row">
             <span class="receipt-label">Cantidad:</span>
-            <span class="receipt-value" id="receipt-qty-count">3 Boletos</span>
+            <span class="receipt-value" id="receipt-qty-count">1 Boleto</span>
           </div>
           <div class="receipt-row">
             <span class="receipt-label">Nombre:</span>
@@ -943,7 +945,7 @@
           </div>
           <div class="receipt-row">
             <span class="receipt-label">Total a Transferir:</span>
-            <span class="receipt-value" id="receipt-total-amount">RD$ 900</span>
+            <span class="receipt-value" id="receipt-total-amount">RD$ 300</span>
           </div>
           <div
             style="margin-top:14px; background:#faf5ed; border:1px dashed #d5c8b5; padding:12px; border-radius:6px; font-size:0.83rem; color:#5c4e43; text-align:left;">
@@ -978,7 +980,9 @@
   <!-- Modal: Bases del Concurso -->
   <div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="terms-title">
     <div class="modal-content">
-      <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana">&times;</button>
+      <button class="modal-close" id="modal-close-btn" aria-label="Cerrar ventana">
+        <svg class="modal-close-x-svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
       <h3 class="modal-title" id="terms-title">Bases y Condiciones del Sorteo</h3>
       <div class="modal-body">
         <p><strong>1. Entidad Organizadora:</strong> La Rifa Navideña 2026 es coordinada por dtc & co (Denisse Tejada
@@ -1001,7 +1005,7 @@
 
   <!-- Bootstrap 5 Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="assets/js/app.js?v=11"></script>
+  <script src="assets/js/app.js?v=12"></script>
 </body>
 
 </html>
