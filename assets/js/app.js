@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputBuyerAddress = document.getElementById('buyer-address');
   const modalSummaryQty = document.getElementById('modal-summary-qty');
   const modalSummaryTotal = document.getElementById('modal-summary-total');
-  
+
   // Elementos de Transferencia y WhatsApp
   const transferTotalAmount = document.getElementById('transfer-total-amount');
   const transferQtySummary = document.getElementById('transfer-qty-summary');
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (stickyPriceDisplay) stickyPriceDisplay.innerText = `RD$ ${formattedTotal}`;
     if (modalSummaryQty) modalSummaryQty.innerText = currentQty;
     if (modalSummaryTotal) modalSummaryTotal.innerText = `RD$ ${formattedTotal}`;
-    
+
     // Transferencia Bancaria
     if (transferTotalAmount) transferTotalAmount.innerText = `RD$ ${formattedTotal}`;
     if (transferQtySummary) transferQtySummary.innerText = currentQty;
@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
       linkAdvisorHelp.setAttribute('target', '_blank');
       linkAdvisorHelp.setAttribute('rel', 'noopener');
     }
+
+    // Sincronizar enlace dinámico de WhatsApp con la cantidad actual
+    syncWhatsAppLinks();
   }
 
   // Eventos de Selección de Boletos
@@ -198,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (step1) step1.style.display = 'block';
       if (step2) step2.style.display = 'none';
       if (stepSuccess) stepSuccess.style.display = 'none';
-      if (stepsNav) stepsNav.style.display = 'none';
+      if (stepsNav) stepsNav.style.display = 'flex';
       if (tabStep1) tabStep1.classList.add('active');
       if (tabStep2) tabStep2.classList.remove('active');
     } else if (stepNum === 2) {
@@ -224,12 +227,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Función auxiliar para registrar información del comprador
   function saveBuyerInfo() {
-    const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : 'Comprador Registrado';
-    const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '001-0000000-0';
-    const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '(809) 000-0000';
-    const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : 'Monte Plata, RD';
+    const name = inputBuyerName && inputBuyerName.value.trim() ? inputBuyerName.value.trim() : '';
+    const id = inputBuyerId && inputBuyerId.value.trim() ? inputBuyerId.value.trim() : '';
+    const phone = inputBuyerPhone && inputBuyerPhone.value.trim() ? inputBuyerPhone.value.trim() : '';
+    const address = inputBuyerAddress && inputBuyerAddress.value.trim() ? inputBuyerAddress.value.trim() : '';
     currentBuyer = { name, id, phone, address };
   }
+
+  // Generador de Mensaje Oficial para WhatsApp con los datos de la solicitud
+  function buildWhatsAppOrderMessage() {
+    saveBuyerInfo();
+    const total = (currentQty * TICKET_PRICE).toLocaleString('es-DO');
+    const name = currentBuyer.name || (inputBuyerName?.value.trim()) || 'No especificado';
+    const id = currentBuyer.id || (inputBuyerId?.value.trim()) || 'No especificada';
+    const phone = currentBuyer.phone || (inputBuyerPhone?.value.trim()) || 'No especificado';
+    const address = currentBuyer.address || (inputBuyerAddress?.value.trim()) || 'No especificada';
+
+    let msg = `Hola dtc & co, deseo solicitar mis boletos para la Rifa Navideña Monte Plata 2026.\n\n`;
+    msg += `*DATOS DE LA SOLICITUD:*\n`;
+    msg += `- Cantidad: ${currentQty} ${currentQty === 1 ? 'Boleto' : 'Boletos'}\n`;
+    msg += `- Total a transferir: RD$ ${total}\n\n`;
+    msg += `*DATOS DEL PARTICIPANTE:*\n`;
+    msg += `- Nombre y Apellidos: ${name}\n`;
+    msg += `- Cédula: ${id}\n`;
+    msg += `- Teléfono: ${phone}\n`;
+    msg += `- Dirección: ${address}\n\n`;
+    msg += `Adjunto mi comprobante de pago para la asignación de mis boletos oficiales.`;
+
+    return msg;
+  }
+
+  // Sincronización continua de enlaces WhatsApp con los datos actuales
+  function syncWhatsAppLinks() {
+    const msg = buildWhatsAppOrderMessage();
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`;
+    if (btnConfirmWhatsapp) {
+      btnConfirmWhatsapp.href = whatsappUrl;
+    }
+    if (btnReceiptWhatsapp) {
+      btnReceiptWhatsapp.href = whatsappUrl;
+    }
+  }
+
+  // Actualizar enlace en tiempo real mientras el usuario escribe sus datos
+  [inputBuyerName, inputBuyerId, inputBuyerPhone, inputBuyerAddress].forEach(inp => {
+    if (inp) {
+      inp.addEventListener('input', syncWhatsAppLinks);
+      inp.addEventListener('change', syncWhatsAppLinks);
+    }
+  });
 
   // Navegación directa entre pestañas 1 y 2
   if (tabStep1) {
@@ -241,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tabStep2.style.cursor = 'pointer';
     tabStep2.addEventListener('click', () => {
       saveBuyerInfo();
+      syncWhatsAppLinks();
       showStep(2);
     });
   }
@@ -248,8 +295,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnProceedToPayment) {
     btnProceedToPayment.addEventListener('click', () => {
       saveBuyerInfo();
-      // Boceto activo: no redirige externamente a WhatsApp
-      closeCheckoutModal();
+      syncWhatsAppLinks();
+      showStep(2);
     });
   }
 
@@ -274,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
               btn.classList.remove('copied');
             }, 1800);
           }).catch(() => {
-            // Fallback si clipboard API no está disponible
             const originalContent = btn.innerHTML;
             btn.innerHTML = '<span>Copiado</span>';
             setTimeout(() => {
@@ -284,30 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
-  }
-
-  // Generador de Mensaje Oficial para WhatsApp
-  function buildWhatsAppOrderMessage() {
-    saveBuyerInfo();
-    const total = (currentQty * TICKET_PRICE).toLocaleString('es-DO');
-    const name = currentBuyer.name !== 'Comprador Registrado' ? currentBuyer.name : (inputBuyerName?.value.trim() || 'No especificado');
-    const id = currentBuyer.id !== '001-0000000-0' ? currentBuyer.id : (inputBuyerId?.value.trim() || 'No especificada');
-    const phone = currentBuyer.phone !== '(809) 000-0000' ? currentBuyer.phone : (inputBuyerPhone?.value.trim() || 'No especificado');
-    const address = currentBuyer.address !== 'Monte Plata, RD' ? currentBuyer.address : (inputBuyerAddress?.value.trim() || 'No especificada');
-
-    return `¡Hola dtc & co! 👋 Deseo comprar mis boletos para la *Rifa Navideña Monte Plata 2026* por transferencia bancaria.
-
-📋 *Detalles de mi Pedido:*
-• *Cantidad:* ${currentQty} ${currentQty === 1 ? 'Boleto' : 'Boletos'}
-• *Total a Transferir:* RD$ ${total}
-
-👤 *Datos del Participante:*
-• *Nombre:* ${name}
-• *Cédula:* ${id}
-• *Teléfono:* ${phone}
-• *Dirección:* ${address}
-
-Adjunto el comprobante de pago de mi transferencia bancaria para que me envíen los números oficiales de mis boletos. ¡Muchas gracias!`;
   }
 
   // 7. Finalización y Resumen de Solicitud
@@ -321,31 +343,20 @@ Adjunto el comprobante de pago de mi transferencia bancaria para que me envíen 
     if (receiptBuyerAddress) receiptBuyerAddress.innerText = currentBuyer.address || 'N/D';
     if (receiptTotalAmount) receiptTotalAmount.innerText = `RD$ ${total}`;
 
-    if (btnReceiptWhatsapp) {
-      const msg = buildWhatsAppOrderMessage();
-      btnReceiptWhatsapp.href = `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`;
-    }
-
+    syncWhatsAppLinks();
     showStep(3);
   }
 
   // Botón Principal de WhatsApp en Paso 2
   if (btnConfirmWhatsapp) {
     btnConfirmWhatsapp.addEventListener('click', () => {
-      const msg = buildWhatsAppOrderMessage();
-      const whatsappUrl = `https://wa.me/${WHATSAPP_PRIMARY}?text=${encodeURIComponent(msg)}`;
-      window.open(whatsappUrl, '_blank');
-      completePayment();
+      syncWhatsAppLinks();
+      setTimeout(() => {
+        completePayment();
+      }, 350);
     });
   }
 
-  // Botón Secundario para ver resumen digital
-  if (btnViewReceipt) {
-    btnViewReceipt.addEventListener('click', () => {
-      saveBuyerInfo();
-      completePayment();
-    });
-  }
 
   if (btnFinishCheckout) {
     btnFinishCheckout.addEventListener('click', () => {
@@ -393,41 +404,45 @@ Adjunto el comprobante de pago de mi transferencia bancaria para que me envíen 
     });
   }
 
-  // Cinema Stage: Selector Interactivo de Escenas
-  const cinemaVideo = document.getElementById('cinema-main-video');
-  const cinemaPhoto = document.getElementById('cinema-main-photo');
-  const cinemaCaption = document.getElementById('cinema-caption-title');
-  const sceneButtons = document.querySelectorAll('.scene-tab-btn');
+  // Prize Exhibition Carousel Controller
+  const carouselTrack = document.getElementById('carousel-track');
+  const carouselSlides = document.querySelectorAll('.carousel-slide');
+  const carouselDots = document.querySelectorAll('.carousel-dot');
+  const btnPrev = document.getElementById('carousel-prev');
+  const btnNext = document.getElementById('carousel-next');
+  let currentSlide = 0;
+  const totalSlides = carouselSlides.length;
 
-  sceneButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      sceneButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  function goToSlide(index) {
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    currentSlide = index;
 
-      const mediaType = btn.getAttribute('data-type');
-      const mediaSrc = btn.getAttribute('data-src');
-      const mediaTitle = btn.getAttribute('data-title');
+    if (carouselTrack) {
+      carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
 
-      if (cinemaCaption) cinemaCaption.textContent = mediaTitle;
+    // Pause all carousel videos when changing slides
+    document.querySelectorAll('.carousel-video').forEach(video => {
+      video.pause();
+    });
 
-      if (mediaType === 'video') {
-        if (cinemaPhoto) cinemaPhoto.style.display = 'none';
-        if (cinemaVideo) {
-          cinemaVideo.style.display = 'block';
-          cinemaVideo.pause();
-          cinemaVideo.src = mediaSrc;
-          cinemaVideo.load();
-        }
-      } else if (mediaType === 'photo') {
-        if (cinemaVideo) {
-          cinemaVideo.pause();
-          cinemaVideo.style.display = 'none';
-        }
-        if (cinemaPhoto) {
-          cinemaPhoto.style.display = 'block';
-          cinemaPhoto.src = mediaSrc;
-        }
-      }
+    carouselDots.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlide);
+    });
+  }
+
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => goToSlide(currentSlide - 1));
+  }
+  if (btnNext) {
+    btnNext.addEventListener('click', () => goToSlide(currentSlide + 1));
+  }
+
+  carouselDots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const slideIdx = parseInt(dot.getAttribute('data-slide'), 10);
+      goToSlide(slideIdx);
     });
   });
 });

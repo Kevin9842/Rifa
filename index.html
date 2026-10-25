@@ -26,7 +26,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=11">
 
   <!-- Favicon: Logo DTC & CO en la pestaña del navegador -->
   <link rel="icon" type="image/png" href="assets/images/logo_dtc_sage.png">
@@ -149,8 +149,9 @@
 
         <!-- 1st Place: Honda CR-V -->
         <div class="prize-card prize-card-crv">
-          <div class="prize-vehicle-stage stage-crv">
-            <img src="assets/images/honda_crv_transparent.png" alt="Honda CR-V Touring 2022 Blanco" class="vehicle-img" loading="eager">
+          <div class="prize-photo-box">
+            <img src="assets/images/honda_crv.jpg" alt="Honda CR-V Touring 2022 Blanco" class="vehicle-img"
+              loading="eager">
           </div>
           <div class="prize-card-content">
             <span class="prize-badge-pill badge-crv">1er Lugar</span>
@@ -160,12 +161,14 @@
 
         <!-- 2nd Place: Husqvarna Supermoto -->
         <div class="prize-card prize-card-moto">
-          <div class="prize-vehicle-stage stage-moto">
-            <img src="assets/images/husqvarna_transparent.png" alt="Supermoto Husqvarna 701 Modelo 2026" class="vehicle-img" loading="eager">
+          <div class="prize-photo-box">
+            <img src="assets/images/husqvarna.jpg" alt="Supermoto Husqvarna 701 Modelo 2026" class="vehicle-img"
+              loading="eager">
           </div>
           <div class="prize-card-content">
             <span class="prize-badge-pill badge-moto">2do Lugar</span>
-            <h2 class="prize-title title-moto">Supermoto<br>Husqvarna<br><span class="prize-subtitle">701 - 2026</span></h2>
+            <h2 class="prize-title title-moto">Supermoto<br>Husqvarna<br><span class="prize-subtitle">701 - 2026</span>
+            </h2>
           </div>
         </div>
 
@@ -238,22 +241,6 @@
           </svg>
           <span>829-639-1950</span>
         </a>
-        <span class="contact-divider">|</span>
-        <a href="tel:8492437510" class="contact-phone-link">
-          <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-          </svg>
-          <span>849-243-7510</span>
-        </a>
-        <span class="contact-divider">|</span>
-        <a href="tel:6466687510" class="contact-phone-link">
-          <svg class="svg-icon" viewBox="0 0 24 24">
-            <path
-              d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-          </svg>
-          <span>646-668-7510</span>
-        </a>
       </div>
 
     </section>
@@ -310,44 +297,141 @@
         <h3 class="section-heading">Exhibición de Premios en Monte Plata</h3>
       </div>
 
-      <!-- Cinema Stage Showcase: Clean Cinematic Player with Scene Selector -->
-      <div class="cinema-showcase-box">
-        
-        <!-- Screen Frame -->
-        <div class="cinema-screen-wrap" id="cinema-screen-wrap">
-          <video id="cinema-main-video" controls preload="metadata" poster="assets/images/exhibicion_monte_plata.jpg" playsinline>
-            <source src="assets/videos/video_presentacion_oficial.mp4" type="video/mp4">
-            Tu navegador no soporta reproducción de video.
-          </video>
-          <img id="cinema-main-photo" src="assets/images/exhibicion_monte_plata.jpg" alt="Honda CR-V y Husqvarna en Monte Plata" style="display:none;" loading="lazy">
+      <!-- Prize Exhibition Carousel -->
+      <div class="prize-carousel-container" id="prize-carousel">
+
+        <!-- Track Wrapper -->
+        <div class="prize-carousel-track-wrap">
+          <div class="prize-carousel-track" id="carousel-track">
+
+            <!-- Slide 1: Foto Exhibición Monte Plata -->
+            <div class="carousel-slide" data-index="0">
+              <div class="slide-media-wrap photo-slide-wrap">
+                <img src="assets/images/exhibicion_monte_plata.jpg" alt="Honda CR-V 2022 y Husqvarna 701 en Monte Plata"
+                  class="carousel-photo" loading="eager">
+                <div class="slide-badge-overlay">
+                  <span class="slide-type-tag">
+                    <svg class="badge-icon-svg" viewBox="0 0 24 24">
+                      <path
+                        d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" />
+                    </svg>
+                    <span>Fotografía</span>
+                  </span>
+                  <span class="slide-loc-tag">Monte Plata</span>
+                </div>
+              </div>
+              <div class="slide-caption-bar">
+                <h4 class="slide-title">Honda CR-V 2022 y Husqvarna 701 en Exhibición</h4>
+                <span class="slide-index-counter">1 / 4</span>
+              </div>
+            </div>
+
+            <!-- Slide 2: Video Presentación Oficial -->
+            <div class="carousel-slide" data-index="1">
+              <div class="slide-media-wrap">
+                <video class="carousel-video" controls preload="metadata"
+                  poster="assets/images/exhibicion_monte_plata.jpg" playsinline>
+                  <source src="assets/videos/video_presentacion_oficial.mp4" type="video/mp4">
+                  Tu navegador no soporta reproducción de video.
+                </video>
+                <div class="slide-badge-overlay">
+                  <span class="slide-type-tag">
+                    <svg class="badge-icon-svg" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span>Video Oficial</span>
+                  </span>
+                  <span class="slide-loc-tag">Monte Plata</span>
+                </div>
+              </div>
+              <div class="slide-caption-bar">
+                <h4 class="slide-title">Presentación Oficial de los Vehículos</h4>
+                <span class="slide-index-counter">2 / 4</span>
+              </div>
+            </div>
+
+            <!-- Slide 3: Video Husqvarna Supermoto -->
+            <div class="carousel-slide" data-index="2">
+              <div class="slide-media-wrap">
+                <video class="carousel-video" controls preload="metadata"
+                  poster="assets/images/poster_husqvarna_16x9.jpg?v=7" playsinline>
+                  <source src="assets/videos/video_husqvarna_16x9.mp4?v=7" type="video/mp4">
+                  Tu navegador no soporta reproducción de video.
+                </video>
+                <div class="slide-badge-overlay">
+                  <span class="slide-type-tag">
+                    <svg class="badge-icon-svg" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span>2do Lugar</span>
+                  </span>
+                  <span class="slide-loc-tag">Monte Plata</span>
+                </div>
+              </div>
+              <div class="slide-caption-bar">
+                <h4 class="slide-title">Supermoto Husqvarna 701 - Modelo 2026</h4>
+                <span class="slide-index-counter">3 / 4</span>
+              </div>
+            </div>
+
+            <!-- Slide 4: Video Talonarios Oficiales -->
+            <div class="carousel-slide" data-index="3">
+              <div class="slide-media-wrap">
+                <video class="carousel-video" controls preload="metadata"
+                  poster="assets/images/poster_talonarios_16x9.jpg" playsinline>
+                  <source src="assets/videos/video_talonarios_16x9.mp4" type="video/mp4">
+                  Tu navegador no soporta reproducción de video.
+                </video>
+                <div class="slide-badge-overlay">
+                  <span class="slide-type-tag">
+                    <svg class="badge-icon-svg" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span>Transparencia</span>
+                  </span>
+                  <span class="slide-loc-tag">Talonarios</span>
+                </div>
+              </div>
+              <div class="slide-caption-bar">
+                <h4 class="slide-title">Talonarios Oficiales de Boletos Físicos</h4>
+                <span class="slide-index-counter">4 / 4</span>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <!-- Cinema Title Bar -->
-        <div class="cinema-info-bar">
-          <span class="cinema-loc-tag">Monte Plata</span>
-          <h4 class="cinema-caption-title" id="cinema-caption-title">Presentación de los Vehículos</h4>
-        </div>
+        <!-- Carousel Navigation Arrows -->
+        <button type="button" class="carousel-nav-btn prev-btn" id="carousel-prev" aria-label="Slide anterior">
+          <svg viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+          </svg>
+        </button>
+        <button type="button" class="carousel-nav-btn next-btn" id="carousel-next" aria-label="Siguiente slide">
+          <svg viewBox="0 0 24 24">
+            <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+          </svg>
+        </button>
 
-        <!-- Scene Selector Pills / Tabs -->
-        <div class="cinema-scenes-nav">
-          <button type="button" class="scene-tab-btn active" data-type="video" data-src="assets/videos/video_presentacion_oficial.mp4" data-title="Presentación de los Vehículos">
-            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span>Vehículos</span>
+        <!-- Carousel Indicators / Dots with Labels -->
+        <div class="carousel-pagination" id="carousel-pagination">
+          <button type="button" class="carousel-dot active" data-slide="0" aria-label="Ver slide 1">
+            <span class="dot-fill"></span>
+            <span class="dot-label">Fotografía</span>
           </button>
-          <button type="button" class="scene-tab-btn" data-type="video" data-src="assets/videos/video_husqvarna_supermoto.mp4" data-title="Supermoto Husqvarna 701">
-            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span>Husqvarna 701</span>
+          <button type="button" class="carousel-dot" data-slide="1" aria-label="Ver slide 2">
+            <span class="dot-fill"></span>
+            <span class="dot-label">Vehículos</span>
           </button>
-          <button type="button" class="scene-tab-btn" data-type="video" data-src="assets/videos/video_talonarios_oficiales.mp4" data-title="Talonarios de Boletos Físicos">
-            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            <span>Talonarios</span>
+          <button type="button" class="carousel-dot" data-slide="2" aria-label="Ver slide 3">
+            <span class="dot-fill"></span>
+            <span class="dot-label">Husqvarna 701</span>
           </button>
-          <button type="button" class="scene-tab-btn" data-type="photo" data-src="assets/images/exhibicion_monte_plata.jpg" data-title="Honda CR-V 2022 y Husqvarna 701">
-            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-            <span>Fotografía</span>
+          <button type="button" class="carousel-dot" data-slide="3" aria-label="Ver slide 4">
+            <span class="dot-fill"></span>
+            <span class="dot-label">Talonarios</span>
           </button>
         </div>
-
       </div>
     </section>
 
@@ -367,11 +451,11 @@
 
       <!-- Preset Quantity Packs -->
       <div class="packs-grid">
-        <div class="pack-button" data-qty="1">
+        <div class="pack-button active" data-qty="1">
           <span class="pack-qty">1 Boleto</span>
           <span class="pack-cost">RD$ 300</span>
         </div>
-        <div class="pack-button active" data-qty="3">
+        <div class="pack-button" data-qty="3">
           <span class="pack-badge-tag">Más Solicitado</span>
           <span class="pack-qty">3 Boletos</span>
           <span class="pack-cost">RD$ 900</span>
@@ -395,7 +479,7 @@
           defina una cantidad específica:</span>
         <div class="stepper-row">
           <button type="button" class="stepper-btn" id="stepper-minus" aria-label="Disminuir boletos">−</button>
-          <input type="number" id="ticket-stepper-input" class="stepper-input" value="3" min="1" max="100">
+          <input type="number" id="ticket-stepper-input" class="stepper-input" value="1" min="1" max="100">
           <button type="button" class="stepper-btn" id="stepper-plus" aria-label="Aumentar boletos">+</button>
         </div>
       </div>
@@ -403,14 +487,16 @@
       <!-- Order Summary Box -->
       <div class="order-summary-box">
         <div class="order-summary-header">
-          <div class="summary-details-label"><span id="summary-qty">3</span> Boletos</div>
-          <div class="summary-total-price" id="summary-total">RD$ 900</div>
+          <div class="summary-details-label"><span id="summary-qty">1</span> Boleto</div>
+          <div class="summary-total-price" id="summary-total">RD$ 300</div>
         </div>
         <div class="summary-reminder-badge">
           <svg class="summary-reminder-icon" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
           </svg>
-          <span>Tarifa de preventa: <strong>RD$300</strong> por boleto. Le recordamos que el día final del sorteo (20 de Diciembre) el boleto costará <strong>RD$500</strong>.</span>
+          <span>Tarifa de preventa: <strong>RD$300</strong> por boleto. Le recordamos que el día final del sorteo (20 de
+            Diciembre) el boleto costará <strong>RD$500</strong>.</span>
         </div>
       </div>
 
@@ -424,7 +510,8 @@
         </div>
         <div class="trust-badge-item">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
+            <path
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
           <span>Contacto directo: 829-639-1950</span>
         </div>
@@ -433,7 +520,8 @@
       <!-- Primary Action Button: Comprar Boletos Ahora -->
       <button type="button" class="btn-online-checkout" id="btn-open-checkout">
         <svg class="svg-icon" viewBox="0 0 24 24">
-          <path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
+          <path
+            d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
         </svg>
         <span>Comprar Boletos Ahora</span>
       </button>
@@ -474,7 +562,6 @@
           </button>
           <div class="faq-answer">
             El sorteo tendrá lugar el domingo <strong>20 de Diciembre de 2026 en el municipio de Monte Plata</strong>.
-            Se transmitirá en directo por plataformas oficiales ante presencia de autoridades y tómbola verificada.
           </div>
         </div>
 
@@ -486,7 +573,11 @@
             </svg>
           </button>
           <div class="faq-answer">
-            El pago se realiza únicamente mediante <strong>transferencia bancaria</strong> a cualquiera de nuestras cuentas oficiales (Banreservas, Banco Popular o Banco BHD) y confirmando directamente vía <strong>WhatsApp al 849-243-7510</strong> con su comprobante de pago. Al recibirlo, sus números de boletos quedarán formalmente registrados en los talonarios oficiales de la rifa.
+            El pago se realiza mediante <strong>transferencia bancaria</strong> a nombre de <strong>Alejandro Reyes
+              Rijo</strong> (Cédula: <strong>023-0164813-1</strong>) en cualquiera de nuestras cuentas oficiales:
+            <strong>BHD, Banreservas, Mío, Banco Popular o APAP</strong>. Al completar la transferencia, confirme vía
+            <strong>WhatsApp al +1 (829) 639-1950</strong> con su comprobante para recibir los números oficiales de sus
+            boletos.
           </div>
         </div>
 
@@ -529,7 +620,8 @@
       </p>
       <div class="footer-links">
         <a href="#" class="open-terms-modal">Bases del Sorteo y Condiciones</a>
-        <a href="tel:8492437510">Línea de Atención Oficial</a>
+        <a href="https://wa.me/18296391950" target="_blank" rel="noopener">Línea de Atención Oficial (+1
+          829-639-1950)</a>
       </div>
     </footer>
 
@@ -539,11 +631,12 @@
   <aside class="sticky-mobile-cta" aria-label="Comprar Boletos">
     <div class="sticky-info">
       <span class="sticky-title">Rifa Navideña 2026</span>
-      <span class="sticky-price" id="sticky-price-display">RD$ 900</span>
+      <span class="sticky-price" id="sticky-price-display">RD$ 300</span>
     </div>
     <button type="button" class="sticky-btn" id="sticky-checkout-btn">
       <svg class="svg-icon" viewBox="0 0 24 24">
-        <path d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
+        <path
+          d="M22 10V6c0-1.11-.9-2-2-2H4c-1.1 0-1.99.89-1.99 2v4c1.1 0 1.99.9 1.99 2s-.89 2-2 2v4c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-4c-1.1 0-2-.9-2-2s.9-2 2-2zm-2-1.5c-1.25.78-2 2.17-2 3.5s.75 2.72 2 3.5V18H4v-2.5c1.25-.78 2-2.17 2-3.5s-.75-2.72-2-3.5V6h16v2.5z" />
       </svg>
       <span>Comprar Boletos</span>
     </button>
@@ -555,29 +648,30 @@
   <div class="checkout-modal-overlay" id="modal-checkout" role="dialog" aria-modal="true"
     aria-labelledby="checkout-modal-heading">
     <div class="checkout-modal-card">
-      <button class="checkout-modal-close" id="checkout-modal-close-btn"
-        aria-label="Cerrar modal">&times;</button>
+      <button class="checkout-modal-close" id="checkout-modal-close-btn" aria-label="Cerrar modal">&times;</button>
 
       <!-- Checkout Header -->
       <div class="checkout-header">
         <h3 class="checkout-header-title" id="checkout-modal-heading">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
+            <path
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
           Solicitar Boletos por WhatsApp
         </h3>
-        <p class="checkout-header-desc">Complete sus datos y presione el botón para enviar su pedido directamente a nuestro WhatsApp oficial.</p>
+        <p class="checkout-header-desc">Complete sus datos y presione el botón para enviar su pedido directamente a
+          nuestro WhatsApp oficial.</p>
       </div>
 
-      <!-- Step Navigation Tabs (Hidden for single step flow) -->
-      <div class="checkout-steps" id="checkout-steps-nav" style="display:none;">
+      <!-- Step Navigation Tabs -->
+      <div class="checkout-steps" id="checkout-steps-nav">
         <div class="checkout-step-tab active" data-step="1">
           <span class="step-num-pill">1</span>
           <span>Datos del Boleto</span>
         </div>
         <div class="checkout-step-tab" data-step="2">
           <span class="step-num-pill">2</span>
-          <span>Cuentas & WhatsApp</span>
+          <span>Cuentas Bancarias</span>
         </div>
       </div>
 
@@ -605,20 +699,17 @@
         <!-- Mini Order Summary -->
         <div
           style="background:#ede3d2; padding:12px 16px; border-radius:var(--radius-sm); margin-bottom:18px; display:flex; justify-content:space-between; align-items:center;">
-          <span style="font-weight:700; font-size:0.9rem; color:#4a3c31;"><span id="modal-summary-qty">3</span> Boletos
+          <span style="font-weight:700; font-size:0.9rem; color:#4a3c31;"><span id="modal-summary-qty">1</span> Boleto
             a Comprar:</span>
           <span style="font-family:var(--font-main); font-size:1.35rem; font-weight:900; color:#221a15;"
-            id="modal-summary-total">RD$ 900</span>
+            id="modal-summary-total">RD$ 300</span>
         </div>
 
-        <button type="button" class="btn-whatsapp-confirm" id="btn-proceed-to-payment" style="width:100%; justify-content:center;">
-          <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+        <button type="button" class="btn-form-continue" id="btn-proceed-to-payment">
+          <span>Continuar</span>
+          <svg class="continue-arrow-icon" viewBox="0 0 24 24">
+            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z" />
           </svg>
-          <div class="whatsapp-btn-text">
-            <span class="btn-primary-line">Solicitar Boletos (Boceto)</span>
-            <span class="btn-sub-line">Contacto Directo: 829-639-1950</span>
-          </div>
         </button>
       </div>
 
@@ -629,10 +720,10 @@
         <div class="transfer-summary-box">
           <div class="transfer-summary-info">
             <span class="transfer-summary-label">Monto Exacto a Transferir:</span>
-            <div class="transfer-summary-amount" id="transfer-total-amount">RD$ 900</div>
+            <div class="transfer-summary-amount" id="transfer-total-amount">RD$ 300</div>
           </div>
           <div class="transfer-summary-badge">
-            <span id="transfer-qty-summary">3</span> Boletos
+            <span id="transfer-qty-summary">1</span> Boleto
           </div>
         </div>
 
@@ -642,28 +733,94 @@
             <svg class="svg-icon" viewBox="0 0 24 24">
               <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
             </svg>
-            Cuentas Bancarias Oficiales (República Dominicana)
+            Cuentas Bancarias Oficiales
           </h4>
-          <p class="transfer-card-sub">Transfiera a cualquiera de las siguientes cuentas autorizadas por la administración dtc & co:</p>
+          <p class="transfer-card-sub">Transfiera el monto indicado a cualquiera de las siguientes cuentas autorizadas:
+          </p>
+
+          <!-- Beneficiary Information Banner -->
+          <div
+            style="background:#f4ece0; border:1px solid #d8cab5; border-radius:8px; padding:12px 14px; margin-bottom:14px; display:flex; flex-direction:column; gap:4px;">
+            <div style="font-size:0.9rem; color:#2e2016;">
+              <strong>Titular de las Cuentas:</strong> Alejandro Reyes Rijo
+            </div>
+            <div style="font-size:0.86rem; color:#53453b; display:flex; align-items:center; gap:8px;">
+              <span><strong>Cédula:</strong> <span id="acc-cedula">023-0164813-1</span></span>
+              <button type="button" class="btn-copy-acc" data-target="acc-cedula" title="Copiar cédula"
+                style="padding:2px 8px; font-size:0.75rem;">
+                <svg class="copy-icon" viewBox="0 0 24 24" style="width:12px; height:12px;">
+                  <path
+                    d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                </svg>
+                <span>Copiar</span>
+              </button>
+            </div>
+          </div>
 
           <!-- Lista de Cuentas Bancarias -->
           <div class="bank-accounts-list">
-            
-            <!-- Banreservas -->
+
+            <!-- Banco BHD -->
             <div class="bank-account-item">
               <div class="bank-item-top">
-                <span class="bank-pill pill-banreservas">Banreservas</span>
+                <span class="bank-pill pill-bhd">Banco BHD</span>
                 <span class="bank-account-type">Cuenta de Ahorros DOP</span>
               </div>
               <div class="bank-number-row">
-                <span class="bank-acc-num" id="acc-num-banreservas">960-345892-1</span>
-                <button type="button" class="btn-copy-acc" data-target="acc-num-banreservas" title="Copiar número de cuenta">
-                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span class="bank-acc-num" id="acc-num-bhd">14018050043</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-bhd" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
                   <span>Copiar</span>
                 </button>
               </div>
               <div class="bank-beneficiary-info">
-                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
+                <span><strong>Titular:</strong> Alejandro Reyes Rijo</span>
+              </div>
+            </div>
+
+            <!-- Banreservas -->
+            <div class="bank-account-item">
+              <div class="bank-item-top">
+                <span class="bank-pill pill-banreservas">Banreservas</span>
+                <span class="bank-account-type">Cuenta Corriente DOP</span>
+              </div>
+              <div class="bank-number-row">
+                <span class="bank-acc-num" id="acc-num-banreservas">9608729877</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-banreservas"
+                  title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
+                  <span>Copiar</span>
+                </button>
+              </div>
+              <div class="bank-beneficiary-info">
+                <span><strong>Titular:</strong> Alejandro Reyes Rijo</span>
+              </div>
+            </div>
+
+            <!-- Mío -->
+            <div class="bank-account-item">
+              <div class="bank-item-top">
+                <span class="bank-pill pill-mio">Mío</span>
+                <span class="bank-account-type">Cuenta de Ahorros DOP</span>
+              </div>
+              <div class="bank-number-row">
+                <span class="bank-acc-num" id="acc-num-mio">4286403528</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-mio" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
+                  <span>Copiar</span>
+                </button>
+              </div>
+              <div class="bank-beneficiary-info">
+                <span><strong>Titular:</strong> Alejandro Reyes Rijo</span>
               </div>
             </div>
 
@@ -674,32 +831,39 @@
                 <span class="bank-account-type">Cuenta Corriente DOP</span>
               </div>
               <div class="bank-number-row">
-                <span class="bank-acc-num" id="acc-num-popular">821-490215-6</span>
-                <button type="button" class="btn-copy-acc" data-target="acc-num-popular" title="Copiar número de cuenta">
-                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span class="bank-acc-num" id="acc-num-popular">772903720</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-popular"
+                  title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
                   <span>Copiar</span>
                 </button>
               </div>
               <div class="bank-beneficiary-info">
-                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
+                <span><strong>Titular:</strong> Alejandro Reyes Rijo</span>
               </div>
             </div>
 
-            <!-- Banco BHD -->
+            <!-- APAP -->
             <div class="bank-account-item">
               <div class="bank-item-top">
-                <span class="bank-pill pill-bhd">Banco BHD</span>
+                <span class="bank-pill pill-apap">APAP</span>
                 <span class="bank-account-type">Cuenta de Ahorros DOP</span>
               </div>
               <div class="bank-number-row">
-                <span class="bank-acc-num" id="acc-num-bhd">305-891240-5</span>
-                <button type="button" class="btn-copy-acc" data-target="acc-num-bhd" title="Copiar número de cuenta">
-                  <svg class="copy-icon" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span class="bank-acc-num" id="acc-num-apap">1031058990</span>
+                <button type="button" class="btn-copy-acc" data-target="acc-num-apap" title="Copiar número de cuenta">
+                  <svg class="copy-icon" viewBox="0 0 24 24">
+                    <path
+                      d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" />
+                  </svg>
                   <span>Copiar</span>
                 </button>
               </div>
               <div class="bank-beneficiary-info">
-                <span><strong>Titular:</strong> Denisse Tejada Corniel / dtc & co</span>
+                <span><strong>Titular:</strong> Alejandro Reyes Rijo</span>
               </div>
             </div>
 
@@ -709,7 +873,8 @@
           <div class="transfer-steps-guide">
             <div class="step-guide-item">
               <span class="step-dot">1</span>
-              <span>Realice la transferencia bancaria por <strong><span id="guide-total-amount">RD$ 900</span></strong>.</span>
+              <span>Realice la transferencia bancaria por <strong><span id="guide-total-amount">RD$
+                    300</span></strong>.</span>
             </div>
             <div class="step-guide-item">
               <span class="step-dot">2</span>
@@ -717,29 +882,25 @@
             </div>
             <div class="step-guide-item">
               <span class="step-dot">3</span>
-              <span>Presione el botón a continuación para enviar su comprobante por WhatsApp (<strong>849-243-7510</strong>) y recibir sus boletos oficiales.</span>
+              <span>Presione el botón a continuación para enviar su comprobante por WhatsApp (<strong>+1
+                  829-639-1950</strong>) y recibir sus boletos oficiales.</span>
             </div>
           </div>
         </div>
 
         <!-- Botón Principal: WhatsApp -->
-        <button type="button" class="btn-whatsapp-confirm" id="btn-confirm-whatsapp">
+        <a href="https://wa.me/18296391950" target="_blank" rel="noopener" class="btn-whatsapp-confirm"
+          id="btn-confirm-whatsapp" style="text-decoration:none;">
           <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+            <path
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
           <div class="whatsapp-btn-text">
             <span class="btn-primary-line">Solicitar Boletos por WhatsApp</span>
-            <span class="btn-sub-line">Enviar comprobante a dtc & co (849-243-7510)</span>
+            <span class="btn-sub-line">Enviar solicitud a dtc & co (+1 829-639-1950)</span>
           </div>
-        </button>
+        </a>
 
-        <!-- Botón Secundario: Ver Comprobante Digital -->
-        <button type="button" class="btn-view-digital-receipt" id="btn-view-receipt">
-          <svg class="svg-icon" viewBox="0 0 24 24">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-          </svg>
-          <span>Ver Comprobante de Compra</span>
-        </button>
 
         <button type="button" id="btn-back-to-step1"
           style="background:transparent; border:none; color:#6a5e55; font-size:0.86rem; font-weight:700; cursor:pointer; margin-top:14px; text-decoration:underline;">
@@ -755,7 +916,8 @@
           </svg>
         </div>
         <h4 class="confirm-title">¡Solicitud de Boletos Registrada!</h4>
-        <p class="confirm-subtitle">Envíe su comprobante de transferencia bancaria por WhatsApp para recibir los números oficiales de sus boletos en el talonario de dtc & co.</p>
+        <p class="confirm-subtitle">Envíe su comprobante de transferencia bancaria por WhatsApp para recibir los números
+          oficiales de sus boletos en el talonario de dtc & co.</p>
 
         <!-- Official Digital Receipt (Real Data) -->
         <div class="digital-receipt-box">
@@ -783,20 +945,25 @@
             <span class="receipt-label">Total a Transferir:</span>
             <span class="receipt-value" id="receipt-total-amount">RD$ 900</span>
           </div>
-          <div style="margin-top:14px; background:#faf5ed; border:1px dashed #d5c8b5; padding:12px; border-radius:6px; font-size:0.83rem; color:#5c4e43; text-align:left;">
+          <div
+            style="margin-top:14px; background:#faf5ed; border:1px dashed #d5c8b5; padding:12px; border-radius:6px; font-size:0.83rem; color:#5c4e43; text-align:left;">
             <strong style="display:block; color:#3e5033; margin-bottom:4px;">Asignación de Boletos:</strong>
-            Sus números oficiales de boletos le serán entregados directamente por WhatsApp al validar su comprobante de transferencia bancaria.
+            Sus números oficiales de boletos le serán entregados directamente por WhatsApp al validar su comprobante de
+            transferencia bancaria.
           </div>
         </div>
 
         <!-- Botón Directo WhatsApp en Comprobante -->
-        <a href="#" target="_blank" rel="noopener" class="btn-whatsapp-confirm" id="btn-receipt-whatsapp" style="margin-bottom:12px; text-decoration:none;">
+        <a href="#" target="_blank" rel="noopener" class="btn-whatsapp-confirm" id="btn-receipt-whatsapp"
+          style="margin-bottom:12px; text-decoration:none;">
           <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+            <path
+              d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z" />
           </svg>
           <div class="whatsapp-btn-text">
             <span class="btn-primary-line">Enviar Datos por WhatsApp</span>
-            <span class="btn-sub-line">(849-243-7510 • Adjunte su comprobante bancario para recibir sus boletos)</span>
+            <span class="btn-sub-line">(+1 829-639-1950 • Adjunte su comprobante bancario para recibir sus
+              boletos)</span>
           </div>
         </a>
 
@@ -834,7 +1001,7 @@
 
   <!-- Bootstrap 5 Bundle JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="assets/js/app.js"></script>
+  <script src="assets/js/app.js?v=11"></script>
 </body>
 
 </html>
