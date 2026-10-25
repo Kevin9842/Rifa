@@ -144,31 +144,30 @@
         <div class="ribbon-tag">Pueden ser tuyos</div>
       </div>
 
-      <!-- Vehicle Cards (Clean, authentic to the flyer without invented specs) -->
+      <!-- Vehicle Showcase (Authentic Poster Composition, Balanced Podiums) -->
       <div class="vehicles-showcase">
 
-        <!-- 1st Place: Honda CR-V (Sage Green Card) -->
-        <article class="vehicle-card card-crv">
-          <div>
-            <span class="vehicle-badge-pill">1er Lugar</span>
-            <h2 class="vehicle-title">Honda CR-V<br>Touring 2022</h2>
+        <!-- 1st Place: Honda CR-V -->
+        <div class="prize-card prize-card-crv">
+          <div class="prize-vehicle-stage stage-crv">
+            <img src="assets/images/honda_crv_transparent.png" alt="Honda CR-V Touring 2022 Blanco" class="vehicle-img" loading="eager">
           </div>
-          <div class="vehicle-img-wrapper">
-            <img src="assets/images/honda_crv.jpg" alt="Honda CR-V Touring 2022 Blanco" loading="lazy">
+          <div class="prize-card-content">
+            <span class="prize-badge-pill badge-crv">1er Lugar</span>
+            <h2 class="prize-title title-crv">Honda CR-V<br>Touring 2022</h2>
           </div>
-        </article>
+        </div>
 
-        <!-- 2nd Place: Husqvarna Supermoto (Cream Card) -->
-        <article class="vehicle-card card-moto">
-          <div>
-            <span class="vehicle-badge-pill">2do Lugar</span>
-            <h2 class="vehicle-title">Supermoto<br>Husqvarna<br><small style="font-size:0.92rem; font-weight:700;">701 -
-                2026</small></h2>
+        <!-- 2nd Place: Husqvarna Supermoto -->
+        <div class="prize-card prize-card-moto">
+          <div class="prize-vehicle-stage stage-moto">
+            <img src="assets/images/husqvarna_transparent.png" alt="Supermoto Husqvarna 701 Modelo 2026" class="vehicle-img" loading="eager">
           </div>
-          <div class="vehicle-img-wrapper">
-            <img src="assets/images/husqvarna.jpg" alt="Supermoto Husqvarna 701 Modelo 2026" loading="lazy">
+          <div class="prize-card-content">
+            <span class="prize-badge-pill badge-moto">2do Lugar</span>
+            <h2 class="prize-title title-moto">Supermoto<br>Husqvarna<br><span class="prize-subtitle">701 - 2026</span></h2>
           </div>
-        </article>
+        </div>
 
       </div>
 
@@ -311,73 +310,43 @@
         <h3 class="section-heading">Exhibición de Premios en Monte Plata</h3>
       </div>
 
-      <!-- Exhibition Multi-Column Grid (2 columns on PC/Tablet) -->
-      <div class="exhibition-grid">
+      <!-- Cinema Stage Showcase: Clean Cinematic Player with Scene Selector -->
+      <div class="cinema-showcase-box">
+        
+        <!-- Screen Frame -->
+        <div class="cinema-screen-wrap" id="cinema-screen-wrap">
+          <video id="cinema-main-video" controls preload="metadata" poster="assets/images/exhibicion_monte_plata.jpg" playsinline>
+            <source src="assets/videos/video_presentacion_oficial.mp4" type="video/mp4">
+            Tu navegador no soporta reproducción de video.
+          </video>
+          <img id="cinema-main-photo" src="assets/images/exhibicion_monte_plata.jpg" alt="Honda CR-V y Husqvarna en Monte Plata" style="display:none;" loading="lazy">
+        </div>
 
-        <!-- Card 1: Foto Oficial en Monte Plata -->
-        <article class="exhibition-card">
-          <div class="card-header-badge">
-            <span class="badge-title">Fotografía Oficial</span>
-            <span class="badge-loc">Monte Plata</span>
-          </div>
-          <div class="exhibition-media-wrap photo-wrap">
-            <img src="assets/images/exhibicion_monte_plata.jpg" alt="Honda CR-V 2022 y Supermoto Husqvarna en Monte Plata" loading="lazy">
-          </div>
-          <div class="card-caption">
-            <h4 class="card-title">Honda CR-V 2022 y Husqvarna 701</h4>
-          </div>
-        </article>
+        <!-- Cinema Title Bar -->
+        <div class="cinema-info-bar">
+          <span class="cinema-loc-tag">Monte Plata</span>
+          <h4 class="cinema-caption-title" id="cinema-caption-title">Presentación de los Vehículos</h4>
+        </div>
 
-        <!-- Card 2: Video de Presentación de los Vehículos -->
-        <article class="exhibition-card">
-          <div class="card-header-badge">
-            <span class="badge-title">Video de los Vehículos</span>
-            <span class="badge-duration">0:57 min</span>
-          </div>
-          <div class="exhibition-media-wrap video-wrap landscape-video">
-            <video controls preload="metadata" poster="assets/images/exhibicion_monte_plata.jpg" playsinline>
-              <source src="assets/videos/video_presentacion_oficial.mp4" type="video/mp4">
-              Tu navegador no soporta reproducción de video.
-            </video>
-          </div>
-          <div class="card-caption">
-            <h4 class="card-title">Presentación de los Vehículos</h4>
-          </div>
-        </article>
-
-        <!-- Card 3: Video Husqvarna 701 Supermoto -->
-        <article class="exhibition-card">
-          <div class="card-header-badge">
-            <span class="badge-title">Husqvarna 701 Supermoto</span>
-            <span class="badge-duration">0:24 min</span>
-          </div>
-          <div class="exhibition-media-wrap video-wrap vertical-video">
-            <video controls preload="metadata" playsinline>
-              <source src="assets/videos/video_husqvarna_supermoto.mp4" type="video/mp4">
-              Tu navegador no soporta reproducción de video.
-            </video>
-          </div>
-          <div class="card-caption">
-            <h4 class="card-title">Supermoto Husqvarna 701</h4>
-          </div>
-        </article>
-
-        <!-- Card 4: Video Talonarios de Boletos -->
-        <article class="exhibition-card">
-          <div class="card-header-badge">
-            <span class="badge-title">Talonarios Oficiales</span>
-            <span class="badge-duration">0:14 min</span>
-          </div>
-          <div class="exhibition-media-wrap video-wrap vertical-video">
-            <video controls preload="metadata" playsinline>
-              <source src="assets/videos/video_talonarios_oficiales.mp4" type="video/mp4">
-              Tu navegador no soporta reproducción de video.
-            </video>
-          </div>
-          <div class="card-caption">
-            <h4 class="card-title">Talonarios de Boletos Físicos</h4>
-          </div>
-        </article>
+        <!-- Scene Selector Pills / Tabs -->
+        <div class="cinema-scenes-nav">
+          <button type="button" class="scene-tab-btn active" data-type="video" data-src="assets/videos/video_presentacion_oficial.mp4" data-title="Presentación de los Vehículos">
+            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Vehículos</span>
+          </button>
+          <button type="button" class="scene-tab-btn" data-type="video" data-src="assets/videos/video_husqvarna_supermoto.mp4" data-title="Supermoto Husqvarna 701">
+            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Husqvarna 701</span>
+          </button>
+          <button type="button" class="scene-tab-btn" data-type="video" data-src="assets/videos/video_talonarios_oficiales.mp4" data-title="Talonarios de Boletos Físicos">
+            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <span>Talonarios</span>
+          </button>
+          <button type="button" class="scene-tab-btn" data-type="photo" data-src="assets/images/exhibicion_monte_plata.jpg" data-title="Honda CR-V 2022 y Husqvarna 701">
+            <svg class="scene-icon" viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>Fotografía</span>
+          </button>
+        </div>
 
       </div>
     </section>
@@ -457,7 +426,7 @@
           <svg class="svg-icon" viewBox="0 0 24 24">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
-          <span>Entrega de boletos por WhatsApp (849-243-7510)</span>
+          <span>Contacto directo: 829-639-1950</span>
         </div>
       </div>
 
@@ -593,15 +562,15 @@
       <div class="checkout-header">
         <h3 class="checkout-header-title" id="checkout-modal-heading">
           <svg class="svg-icon" viewBox="0 0 24 24">
-            <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" />
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z" />
           </svg>
-          Comprar Boletos por Transferencia
+          Solicitar Boletos por WhatsApp
         </h3>
-        <p class="checkout-header-desc">Transfiera a cualquiera de nuestras cuentas oficiales y solicite sus boletos vía WhatsApp.</p>
+        <p class="checkout-header-desc">Complete sus datos y presione el botón para enviar su pedido directamente a nuestro WhatsApp oficial.</p>
       </div>
 
-      <!-- Step Navigation Tabs -->
-      <div class="checkout-steps" id="checkout-steps-nav">
+      <!-- Step Navigation Tabs (Hidden for single step flow) -->
+      <div class="checkout-steps" id="checkout-steps-nav" style="display:none;">
         <div class="checkout-step-tab active" data-step="1">
           <span class="step-num-pill">1</span>
           <span>Datos del Boleto</span>
@@ -642,8 +611,14 @@
             id="modal-summary-total">RD$ 900</span>
         </div>
 
-        <button type="button" class="btn-online-checkout" id="btn-proceed-to-payment">
-          <span>Continuar a Cuentas Bancarias &rarr;</span>
+        <button type="button" class="btn-whatsapp-confirm" id="btn-proceed-to-payment" style="width:100%; justify-content:center;">
+          <svg class="whatsapp-btn-svg" viewBox="0 0 24 24">
+            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 16.59c-1.5 0-2.96-.4-4.24-1.17l-.3-.18-3.14.82.84-3.06-.2-.31a8.16 8.16 0 0 1-1.25-4.3c0-4.52 3.68-8.2 8.21-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.41 3.61 2.41 5.8 0 4.52-3.68 8.2-8.21 8.2zm4.51-6.14c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.65.8-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.84-.86 2.05 0 1.21.88 2.38 1 2.54.12.17 1.74 2.65 4.21 3.72.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.17-.48-.29z"/>
+          </svg>
+          <div class="whatsapp-btn-text">
+            <span class="btn-primary-line">Solicitar Boletos (Boceto)</span>
+            <span class="btn-sub-line">Contacto Directo: 829-639-1950</span>
+          </div>
         </button>
       </div>
 

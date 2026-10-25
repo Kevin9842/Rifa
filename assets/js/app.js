@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Configuración General
   const TICKET_PRICE = 300;
-  const WHATSAPP_PRIMARY = '18492437510';
+  const WHATSAPP_PRIMARY = '18296391950';
   const RAFFLE_DATE = new Date('2026-12-20T20:00:00-04:00').getTime();
 
   // Elementos DOM - Contador
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (step1) step1.style.display = 'block';
       if (step2) step2.style.display = 'none';
       if (stepSuccess) stepSuccess.style.display = 'none';
-      if (stepsNav) stepsNav.style.display = 'flex';
+      if (stepsNav) stepsNav.style.display = 'none';
       if (tabStep1) tabStep1.classList.add('active');
       if (tabStep2) tabStep2.classList.remove('active');
     } else if (stepNum === 2) {
@@ -248,7 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnProceedToPayment) {
     btnProceedToPayment.addEventListener('click', () => {
       saveBuyerInfo();
-      showStep(2);
+      // Boceto activo: no redirige externamente a WhatsApp
+      closeCheckoutModal();
     });
   }
 
@@ -392,15 +393,41 @@ Adjunto el comprobante de pago de mi transferencia bancaria para que me envíen 
     });
   }
 
-  // Control de reproducción de videos: pausar otros videos al iniciar uno
-  const galleryVideos = document.querySelectorAll('.exhibition-media-wrap video, .video-frame-wrap video');
-  galleryVideos.forEach(vid => {
-    vid.addEventListener('play', () => {
-      galleryVideos.forEach(otherVid => {
-        if (otherVid !== vid && !otherVid.paused) {
-          otherVid.pause();
+  // Cinema Stage: Selector Interactivo de Escenas
+  const cinemaVideo = document.getElementById('cinema-main-video');
+  const cinemaPhoto = document.getElementById('cinema-main-photo');
+  const cinemaCaption = document.getElementById('cinema-caption-title');
+  const sceneButtons = document.querySelectorAll('.scene-tab-btn');
+
+  sceneButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sceneButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const mediaType = btn.getAttribute('data-type');
+      const mediaSrc = btn.getAttribute('data-src');
+      const mediaTitle = btn.getAttribute('data-title');
+
+      if (cinemaCaption) cinemaCaption.textContent = mediaTitle;
+
+      if (mediaType === 'video') {
+        if (cinemaPhoto) cinemaPhoto.style.display = 'none';
+        if (cinemaVideo) {
+          cinemaVideo.style.display = 'block';
+          cinemaVideo.pause();
+          cinemaVideo.src = mediaSrc;
+          cinemaVideo.load();
         }
-      });
+      } else if (mediaType === 'photo') {
+        if (cinemaVideo) {
+          cinemaVideo.pause();
+          cinemaVideo.style.display = 'none';
+        }
+        if (cinemaPhoto) {
+          cinemaPhoto.style.display = 'block';
+          cinemaPhoto.src = mediaSrc;
+        }
+      }
     });
   });
 });
