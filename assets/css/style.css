@@ -2637,3 +2637,289 @@ body {
     font-size: 0.78rem;
   }
 }
+
+/* ====================================================== */
+/* SECTION: COMISIONES PARA VENDEDORES                     */
+/* ====================================================== */
+.commissions-section {
+  background: #ffffff;
+  border: 1px solid #e8decb;
+  border-radius: var(--radius-lg);
+  padding: 36px 24px;
+  margin: 0 auto 32px auto;
+  box-shadow: 0 10px 32px rgba(60, 42, 28, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.commissions-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #556b46, #b55328, #d49a44, #556b46);
+}
+
+.commissions-header {
+  text-align: center;
+  max-width: 620px;
+  margin: 0 auto 28px auto;
+}
+
+.commissions-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7efe4;
+  border: 1px solid #dfcfbc;
+  color: #8c3b16;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 12px;
+}
+
+.badge-sparkle {
+  color: #b55328;
+  font-size: 0.95rem;
+}
+
+.commissions-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  font-weight: 900;
+  color: #a4421b;
+  letter-spacing: 1px;
+  line-height: 1.05;
+  margin: 0 0 4px 0;
+  text-shadow: 0 2px 4px rgba(164, 66, 27, 0.12);
+}
+
+.commissions-subtitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #485c3b;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+.commissions-description {
+  font-size: 0.92rem;
+  color: #645547;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Grid de Comisiones */
+.commissions-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 580px) {
+  .commissions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+.commission-card {
+  background: #ffffff;
+  border: 1.5px solid #e5d8c6;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(60, 42, 28, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.commission-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(60, 42, 28, 0.12);
+  border-color: #b55328;
+}
+
+.commission-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: #faf5ed;
+  border-bottom: 1px solid #ebdccb;
+}
+
+.commission-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #556b46;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(85, 107, 70, 0.25);
+}
+
+.commission-chart-svg {
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+}
+
+.commission-tier-label {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #332418;
+  line-height: 1.25;
+}
+
+.commission-card-bottom {
+  padding: 16px 14px;
+  background: linear-gradient(135deg, #b85429 0%, #9e431c 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.commission-amount {
+  font-family: var(--font-heading);
+  font-size: 2.15rem;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+}
+
+.commission-unit {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 4px;
+  letter-spacing: 0.3px;
+}
+
+/* Tarjeta de Advertencia Vendedores Lejos */
+.commission-notice-card {
+  background: #fff9f0;
+  border: 1.5px solid #ecd8c0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.notice-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #a4421b;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(164, 66, 27, 0.25);
+}
+
+.notice-text {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #3e2e22;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Caja de Contacto Vendedores */
+.commission-contact-box {
+  display: flex;
+  justify-content: center;
+}
+
+.commission-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #1d6e3f 0%, #134e2b 100%);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 40px;
+  box-shadow: 0 6px 20px rgba(19, 78, 43, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  max-width: 100%;
+}
+
+.commission-whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(19, 78, 43, 0.4);
+  color: #ffffff;
+}
+
+.commission-wa-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.commission-wa-svg {
+  width: 26px;
+  height: 26px;
+  fill: #ffffff;
+}
+
+.commission-wa-text-wrap {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.commission-wa-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+
+.commission-wa-phone {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+@media (max-width: 480px) {
+  .commissions-section {
+    padding: 24px 14px;
+  }
+  .commission-whatsapp-btn {
+    padding: 10px 18px;
+    gap: 12px;
+  }
+  .commission-wa-phone {
+    font-size: 1.15rem;
+  }
+}

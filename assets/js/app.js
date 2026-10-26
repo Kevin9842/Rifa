@@ -427,9 +427,11 @@ document.addEventListener('DOMContentLoaded', () => {
       video.pause();
     });
 
-    carouselDots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentSlide);
-    });
+    if (carouselDots && carouselDots.length > 0) {
+      carouselDots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentSlide);
+      });
+    }
   }
 
   if (btnPrev) {
@@ -439,10 +441,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnNext.addEventListener('click', () => goToSlide(currentSlide + 1));
   }
 
-  carouselDots.forEach((dot) => {
-    dot.addEventListener('click', () => {
-      const slideIdx = parseInt(dot.getAttribute('data-slide'), 10);
-      goToSlide(slideIdx);
+  if (carouselDots && carouselDots.length > 0) {
+    carouselDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const slideIdx = parseInt(dot.getAttribute('data-slide'), 10);
+        goToSlide(slideIdx);
+      });
     });
-  });
+  }
 });
